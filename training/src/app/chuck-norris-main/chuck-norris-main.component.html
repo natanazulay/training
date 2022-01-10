@@ -1,0 +1,35 @@
+<div class="top-bar">
+    <img id="top-bar-img" src="./assets/top-bar-pic.png" alt="error">
+</div>
+
+<div class="buttons">
+    <mat-button-toggle-group id="toggle-buttons">
+        <mat-button-toggle value="Random" (click)="toggleStyle()"
+                           [ngClass]="{'white' : toggle, 'orange': !toggle}">
+            Random
+        </mat-button-toggle>
+        <mat-button-toggle value="Search" (click)="toggleStyle()"
+                           [ngClass]="{'orange' : toggle, 'white': !toggle}">
+            Search
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+</div>
+
+<div class="buttons-container">
+    <input id="input-style" matInput value="">
+    <mat-select>
+        <mat-option value="option1">Option 1</mat-option>
+        <mat-option value="option2">Option 2</mat-option>
+        <mat-option value="option3">Option 3</mat-option>
+    </mat-select>
+    <button (click)="onClick()" id="btn-three" mat-flat-button color="primary">Go!</button>
+</div>
+
+<div *ngIf="joke">
+    <blockquote id="quote-style">
+        <p id="joke-value">{{joke.value}}</p>
+    </blockquote>
+</div>
+
+
+
