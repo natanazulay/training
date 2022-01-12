@@ -1,0 +1,147 @@
+#fire {
+  position: relative;
+  width: 1126px;
+  height: 521px;
+  left: 157px;
+  top: -17px;
+}
+
+#chuck-pic {
+  position: absolute;
+  width: 283px;
+  height: 285px;
+  left: 576px;
+  top: 329px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.11));
+  border-radius: 142.5px;
+}
+
+#chuck-norris{
+  position: absolute;
+  width: 349px;
+  height: 66px;
+  left: 545px;
+  top: 503px;
+}
+.parent {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: fit-content;
+  block-size: fit-content;
+}
+
+.rectangle-1{
+  position: absolute;
+  width: 912px;
+  height: 124px;
+  left: 264px;
+  top: 724px;
+
+  background: #FEF2ED;
+}
+
+#go-button{
+  position: absolute;
+  width: 141.24px;
+  height: 39px;
+  left: 996px;
+  top: 766px;
+
+  background: #F05924;
+  border-radius: 0px;
+}
+
+#random-button{
+  position: absolute;
+  width: 105px;
+  height: 39px;
+  left: 615px;
+  top: 641px;
+
+  background: #FFFFFF;
+  border: 1px solid #F05924;
+  box-sizing: border-box;
+  border-radius: 4px 0px 0px 4px;
+}
+
+#search-button{
+  position: absolute;
+  width: 105px;
+  height: 39px;
+  left: 720px;
+  top: 641px;
+
+  background: #F05924;
+  border: 1px solid #F05924;
+  box-sizing: border-box;
+  border-radius: 0px 4px 4px 0px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+
+  color: #FFFFFF;
+}
+
+.key{
+  position: absolute;
+  width: 79.8px;
+  height: 16px;
+  left: 309px;
+  top: 779px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+
+  color: #000000;
+}
+#category{
+  left: 620px;
+}
+
+.rectangle-name{
+  position: absolute;
+  width: 200px;
+  height: 44px;
+  left: 395px;
+  top: 764px;
+
+  background: #FFFFFF;
+  border: 1px solid #C9C9C9;
+  box-sizing: border-box;
+}
+
+.rectangle-category{
+  position: absolute;
+  width: 200px;
+  height: 44px;
+  left: 700px;
+  top: 764px;
+
+  background: #FFFFFF;
+  border: 1px solid #C9C9C9;
+  box-sizing: border-box;
+}
+
+#joke-text{
+  position: absolute;
+  top: 920px;
+  left: 270px;
+  width: 900px;
+  height: 220px;
+
+  border-style: dotted;
+  border-color: #52888d;
+  font-family: Roboto;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 40px;
+  color: cadetblue;
+}
