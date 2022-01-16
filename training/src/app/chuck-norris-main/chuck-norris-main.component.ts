@@ -1,34 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { RandomJokeService } from "./services/random-joke/random-joke.service";
-import { EMPTY, Subject } from "rxjs";
-import { Joke } from "./services/random-joke/joke";
+import { Component } from '@angular/core';
+import { JokeService } from "./services/joke/joke.service";
+import { Joke } from "./models/joke";
 
 @Component({
 	selector: 'app-chuck-norris-main',
 	templateUrl: './chuck-norris-main.component.html',
-	styleUrls: ['./chuck-norris-main.component.css']
+	styleUrls: ['./chuck-norris-main.component.scss']
 })
-export class ChuckNorrisMainComponent implements OnInit {
+export class ChuckNorrisMainComponent {
 
-	private errorMessageSubject = new Subject<string>();
 	joke!: Joke;
-	toggle: boolean = true;
-	constructor(private randomJokeService: RandomJokeService) {
+	isSearchMode: boolean = true;
+
+	constructor(private randomJokeService: JokeService) {
 	}
 
-	ngOnInit(): void {
+	toggleJokeMode(): void {
+		this.isSearchMode = !this.isSearchMode;
 	}
 
-	toggleStyle():void{
-		this.toggle = !this.toggle;
-	}
 	onClick(): void {
-		this.randomJokeService.getJoke().subscribe({
-		next: joke => this.joke = joke,
-			error: err => {
-				this.errorMessageSubject.next(err);
-				return EMPTY;
-			}
-		})
+		this.randomJokeService.getRandomJoke().subscribe(joke => this.joke = joke)
 	}
 }

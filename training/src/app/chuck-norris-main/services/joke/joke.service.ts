@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { catchError, Observable, tap, throwError } from "rxjs";
-import { Joke } from "./joke";
+import { catchError, Observable, throwError } from "rxjs";
+import { Joke } from "../../models/joke";
 
 @Injectable({
 	providedIn: 'root'
 })
-export class RandomJokeService {
+export class JokeService {
 
 	private RandomJokeUrl = 'https://api.chucknorris.io/jokes/random';
 
 	constructor(private http: HttpClient) {
 	}
 
-	public getJoke(): Observable<Joke> {
+	public getRandomJoke(): Observable<Joke> {
 		return this.http.get<Joke>(this.RandomJokeUrl).pipe(
-			tap(joke => console.log('JOKE : ', JSON.stringify(joke))),
-			catchError(RandomJokeService.handleError)
+			catchError(JokeService.handleError)
 		);
 	}
 

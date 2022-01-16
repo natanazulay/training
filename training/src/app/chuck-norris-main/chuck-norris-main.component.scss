@@ -1,0 +1,140 @@
+@import "src/styles";
+
+.top-bar {
+  position: relative;
+  display: grid;
+  height: fit-content;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 8%;
+
+  #top-bar-fire {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  #top-bar-logo {
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.11));
+    border-radius: 142.5px;
+    position: absolute;
+    width: 30%;
+    height: 65%;
+    margin-left: 35%;
+    margin-top: 38%;
+  }
+
+  #top-bar-title {
+    position: absolute;
+    width: 31.8%;
+    height: 11.5%;
+    margin-left: 34.3%;
+    margin-top: 49.6%;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  #toggle-buttons {
+    border-radius: 4px 4px;
+    margin-top: 5%;
+    margin-bottom: -4%;
+    height: 30px;
+    border: 1px solid $orange-color;
+  }
+}
+
+.buttons-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.1fr;
+  grid-gap: 20px 50px;
+  background-color: $off-white-color;
+  padding: 2% 3%;
+  border-radius: 0.4em;
+  margin: 8% 20% 3%;
+
+  #input-style {
+    border: 0 $white-color;
+    border-radius: 0.4em;
+    width: 90%;
+  }
+
+  button {
+    width: 70%;
+    color: $white-color;
+  }
+
+  #btn-three {
+    background-color: $orange-color;
+    width: 141px;
+    height: 39px;
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+.mat-select {
+  background-color: #ffffff;
+  border-radius: 5px;
+  width: 90%;
+}
+
+mat-button-toggle{
+  width: 80px;
+  height: 50px;
+  margin-top: -4px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.orange {
+  background-color: $orange-color;
+  color: $white-color;
+}
+
+.white {
+  background-color: $white-color;
+  color: $orange-color;
+}
+
+blockquote {
+  border: 2px solid $blue-color;
+  text-align: center;
+  font-size: 1.5em;
+  background: $white-color;
+  height: 5%;
+}
+
+blockquote {
+  #joke-value {
+    color: $blue-color;
+    font-size: 20px;
+    background-color: $white-color;
+  }
+}
+
+blockquote:before {
+  color: $gray-color;
+  content: open-quote;
+  font-size: 4em;
+  margin-right: 90%;
+}
+
+blockquote:after {
+  color: $gray-color;
+  content: close-quote;
+  font-size: 4em;
+  margin-left: 90%;
+}
+
+#quote-style {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+
