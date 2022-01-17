@@ -1,26 +1,29 @@
-<div class="main-pic">
-    <img id="fire" src="../assets/unnamed.png" alt="background">
-    <img id="chuck-pic" src="../assets/unnamed-3.png">
-    <img id="chuck-text" src="../assets/unnamed-3_2.png">
-</div>
-
-<div class="nav-buttons">
-    <button id="random-button" mat-raised-button>Random</button>
-    <button id="search-button" mat-raised-button color="warn">Search</button>
-</div>
-
-<div class="rectangle-1">
-    <label class="key" for="name">Your name</label>
-    <input class="rectangle-name" type="text" id="name" name="name">
-    <label class="key" id="category">Category</label>
-    <select class="rectangle-category" for="category" name="category">
-        <option value="all-categories">All categories</option>
-        <option value="animals">Animals</option>
-    </select>
-
-    <button id="go-button" mat-raised-button color="warn" (click)="showJoke()">Go!</button>
-</div>
-
-<div class="rectangle-2">
-    <p id="joke-text" *ngIf="joke">"{{joke}}"</p>
+<div class="main">
+    <div class="main-pic">
+        <img id="fire" src="../assets/unnamed.png" alt="background">
+        <img id="chuck-pic" src="../assets/unnamed-3.png">
+    </div>
+    <div class="nav-buttons">
+        <button id="random-button" mat-raised-button>Random</button>
+        <button id="search-button" mat-raised-button color="warn">Search</button>
+    </div>
+    <div class="body">
+        <div class="rectangle-1">
+            <div class="name-block">
+                <label class="name" for="name">Your name</label>
+                <input class="rectangle-name" type="text" id="name" name="name">
+            </div>
+            <div class="category-block">
+                <label class="category" id="category">Category</label>
+                <select class="rectangle-category" for="category" name="category">
+                    <option value="all-categories">All categories</option>
+                    <option value="animals">Animals</option>
+                </select>
+            </div>
+            <button id="go-button" mat-raised-button color="warn" (click)="generateJoke()">Go!</button>
+        </div>
+        <div class="rectangle-2">
+            <p id="joke-text" *ngIf="joke">"{{joke}}"</p>
+        </div>
+    </div>
 </div>
