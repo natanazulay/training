@@ -12,10 +12,10 @@ export class MainComponent implements OnInit {
   constructor(private jokeService: JokeGeneratorService) { }
 
   ngOnInit(): void {
-  }
+        throw new Error('Method not implemented.');
+    }
 
   showJoke(): void{
     this.jokeService.generateJoke().subscribe(joke => this.joke = joke.value);
   }
-
 }

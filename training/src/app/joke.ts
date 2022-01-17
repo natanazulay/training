@@ -1,8 +1,4 @@
-export class Joke {
-
-	constructor(
-		public url: string,
-		public value: string
-	) {  }
-
+export interface Joke {
+	url: string;
+	value: string;
 }

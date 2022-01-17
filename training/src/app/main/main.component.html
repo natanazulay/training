@@ -1,12 +1,15 @@
-<div class="parent">
+<div class="main-pic">
     <img id="fire" src="../assets/unnamed.png" alt="background">
     <img id="chuck-pic" src="../assets/unnamed-3.png">
-    <img id="chuck-norris" src="../assets/unnamed-3_2.png">
+    <img id="chuck-text" src="../assets/unnamed-3_2.png">
+</div>
 
-    <button id="random-button">Random</button>
-    <button id="search-button">Search</button>
+<div class="nav-buttons">
+    <button id="random-button" mat-raised-button>Random</button>
+    <button id="search-button" mat-raised-button color="warn">Search</button>
+</div>
 
-    <div class="rectangle-1"></div>
+<div class="rectangle-1">
     <label class="key" for="name">Your name</label>
     <input class="rectangle-name" type="text" id="name" name="name">
     <label class="key" id="category">Category</label>
@@ -14,14 +17,10 @@
         <option value="all-categories">All categories</option>
         <option value="animals">Animals</option>
     </select>
-    <input id="go-button" type="submit" value="Go!" (click)="showJoke()">
 
-    <p id="joke-text" *ngIf="joke">"{{joke}}"</p>
-
+    <button id="go-button" mat-raised-button color="warn" (click)="showJoke()">Go!</button>
 </div>
 
-
-
-
-
-
+<div class="rectangle-2">
+    <p id="joke-text" *ngIf="joke">"{{joke}}"</p>
+</div>
