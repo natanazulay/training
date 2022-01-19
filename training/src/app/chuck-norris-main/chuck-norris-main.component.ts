@@ -9,17 +9,17 @@ import { Joke } from "../models/joke";
 })
 export class ChuckNorrisMainComponent {
 
-	joke!: Joke;
-	isSearchMode: boolean = true;
+	public joke!: Joke;
+	public isSearchMode: boolean = true;
 
 	constructor(private randomJokeService: JokeService) {
 	}
 
-	toggleJokeMode(): void {
+	public toggleJokeMode(): void {
 		this.isSearchMode = !this.isSearchMode;
 	}
 
-	generateJoke(getJoke: boolean): void {
+	public generateJoke(getJoke: boolean): void {
 		if (getJoke) {
 			this.randomJokeService.getRandomJoke().subscribe(joke => this.joke = joke);
 		}
