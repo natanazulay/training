@@ -17,21 +17,8 @@
     </mat-button-toggle-group>
 </div>
 
-<div class="buttons-container">
-    <input id="input-style" matInput value="">
-    <mat-select>
-        <mat-option value="option1">Option 1</mat-option>
-        <mat-option value="option2">Option 2</mat-option>
-        <mat-option value="option3">Option 3</mat-option>
-    </mat-select>
-    <button (click)="onClick()" id="btn-three" mat-flat-button color="primary">Go!</button>
-</div>
+<app-joke-generator [joke]="joke" (generateJokeWasClicked)="generateJoke($event)"></app-joke-generator>
 
-<div *ngIf="joke">
-    <blockquote id="quote-style">
-        <p id="joke-value">{{joke.value}}</p>
-    </blockquote>
-</div>
 
 
 

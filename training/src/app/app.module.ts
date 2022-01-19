@@ -9,11 +9,15 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChuckNorrisMainComponent } from "./chuck-norris-main/chuck-norris-main.component";
+import { JokeGeneratorComponent } from './joke-generator/joke-generator.component';
+import { JokeComponent } from './joke/joke.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChuckNorrisMainComponent,
+    JokeGeneratorComponent,
+    JokeComponent,
   ],
   imports: [
     HttpClientModule,

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { JokeService } from "./services/joke/joke.service";
-import { Joke } from "./models/joke";
+import { Joke } from "../models/joke";
 
 @Component({
 	selector: 'app-chuck-norris-main',
@@ -19,7 +19,10 @@ export class ChuckNorrisMainComponent {
 		this.isSearchMode = !this.isSearchMode;
 	}
 
-	onClick(): void {
-		this.randomJokeService.getRandomJoke().subscribe(joke => this.joke = joke)
+	generateJoke(getJoke: boolean): void {
+		if (getJoke) {
+			this.randomJokeService.getRandomJoke().subscribe(joke => this.joke = joke);
+		}
 	}
 }
+
