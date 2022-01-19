@@ -1,5 +1,5 @@
 <div class="body">
-    <div class="rectangle-1">
+    <div class="info-container">
             <div class="name-block">
                 <label class="name" for="name">Your name</label>
                 <input class="rectangle-name" type="text" id="name" name="name">
@@ -11,7 +11,7 @@
                     <option value="animals">Animals</option>
                 </select>
             </div>
-        <button id="go-button" mat-raised-button color="warn" (click)="onClick(true)">Go!</button>
+        <button id="go-button" mat-raised-button color="warn" (click)="onGenerateJokeClick(true)">Go!</button>
     </div>
-    <app-joke [joke] = joke (getJoke)= 'onNotify($event)'></app-joke>
+    <app-joke [joke]=joke></app-joke>
 </div>

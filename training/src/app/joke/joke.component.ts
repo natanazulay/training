@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-joke',
@@ -6,11 +6,5 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./joke.component.scss']
 })
 export class JokeComponent{
-  @Input() joke: string = '';
-  @Output() getJoke : EventEmitter<string> = new EventEmitter<string>();
-  constructor() { }
-
-  onNotify(): void{
-    this.getJoke.emit(this.joke);
-  }
+  @Input() public joke: string;
 }

@@ -7,5 +7,5 @@
         <button id="random-button" mat-raised-button>Random</button>
         <button id="search-button" mat-raised-button color="warn">Search</button>
     </div>
+    <app-joke-generator [joke] = joke (generateJokeClicked)= 'onGenerateJokeClick()'></app-joke-generator>
 </div>
-<app-joke-generator [joke] = joke (generateJokeClicked)= 'onNotify($event)'></app-joke-generator>

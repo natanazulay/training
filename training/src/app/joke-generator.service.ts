@@ -13,5 +13,4 @@ export class JokeGeneratorService {
   generateJoke(): Observable<Joke> {
     return this.http.get<Joke>(this.jokeUrl);
   }
-
 }
