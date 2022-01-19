@@ -8,11 +8,15 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatButtonModule } from "@angular/material/button";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { JokeGeneratorComponent } from './joke-generator/joke-generator.component';
+import { JokeComponent } from './joke/joke.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		MainComponent
+		MainComponent,
+		JokeGeneratorComponent,
+		JokeComponent
 	],
 	imports: [
 		BrowserAnimationsModule,
