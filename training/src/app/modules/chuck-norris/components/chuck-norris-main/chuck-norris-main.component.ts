@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { JokeService } from "./services/joke/joke.service";
-import { Joke } from "../models/joke";
+import { JokeService } from "../../services/joke/joke.service";
+import { Joke } from "../../models/joke.modle";
 
 @Component({
 	selector: 'app-chuck-norris-main',
