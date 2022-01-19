@@ -1,0 +1,37 @@
+@import "src/styles";
+
+blockquote {
+  border: 2px solid $blue-color;
+  text-align: center;
+  font-size: 1.5em;
+  background: $white-color;
+  height: 5%;
+}
+
+blockquote {
+  #joke-value {
+    color: $blue-color;
+    font-size: 20px;
+    background-color: $white-color;
+  }
+}
+
+blockquote:before {
+  color: $gray-color;
+  content: open-quote;
+  font-size: 4em;
+  margin-right: 90%;
+}
+
+blockquote:after {
+  color: $gray-color;
+  content: close-quote;
+  font-size: 4em;
+  margin-left: 90%;
+}
+
+#quote-style {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+

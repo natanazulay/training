@@ -1,0 +1,35 @@
+@import "src/styles";
+
+.buttons-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.1fr;
+  grid-gap: 20px 50px;
+  background-color: $off-white-color;
+  padding: 2% 3%;
+  border-radius: 0.4em;
+  margin: 8% 20% 3%;
+
+  #input-style {
+    border: 0 $white-color;
+    border-radius: 0.4em;
+    width: 90%;
+  }
+
+  button {
+    width: 70%;
+    color: $white-color;
+  }
+
+  #btn-three {
+    background-color: $orange-color;
+    width: 141px;
+    height: 39px;
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+.mat-select {
+  background-color: #ffffff;
+  border-radius: 5px;
+  width: 90%;
+}
