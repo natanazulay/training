@@ -8,6 +8,6 @@ import { Joke } from "../../models/joke.modle";
 })
 export class JokeComponent {
 
-	@Input() public joke!: Joke;
+	@Input() public joke: Joke;
 
 }

@@ -8,11 +8,11 @@ import { Joke } from "../../models/joke.modle";
 })
 export class JokeGeneratorComponent {
 
-	@Input() public joke!: Joke;
-	@Output() private generateJokeWasClicked: EventEmitter<boolean> = new EventEmitter<boolean>()
+	@Input() public joke: Joke;
+	@Output() private generateJokeWasClicked: EventEmitter<void> = new EventEmitter<void>()
 
 	public onClick(): void {
-		this.generateJokeWasClicked.emit(true);
+		this.generateJokeWasClicked.emit();
 	}
 
 }
