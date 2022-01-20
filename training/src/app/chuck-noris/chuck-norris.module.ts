@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChuckNorrisMain } from "../chuck-noris-main/chuck-norris-main.component";
-import { JokeGeneratorComponent } from "../joke-generator/joke-generator.component";
-import { JokeComponent } from "../joke/joke.component";
+import { ChuckNorrisMain } from "./chuck-noris-main/chuck-norris-main.component";
+import { JokeGeneratorComponent } from "./joke-generator/joke-generator.component";
+import { JokeComponent } from "./joke/joke.component";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
