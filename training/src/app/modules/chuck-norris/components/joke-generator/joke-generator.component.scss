@@ -2,34 +2,46 @@
 
 .buttons-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 0.1fr;
-  grid-gap: 20px 50px;
+  grid-template-columns: 0.21fr 1fr 0fr 0.7fr 0.1fr;
+  grid-gap: 40px;
   background-color: $off-white-color;
-  padding: 2% 3%;
   border-radius: 0.4em;
-  margin: 8% 20% 3%;
-
-  #input-style {
-    border: 0 $white-color;
-    border-radius: 0.4em;
-    width: 90%;
-  }
+  margin: 8%;
+  width: 80%;
+  padding: 2% 3% 2px;
 
   button {
     width: 70%;
     color: $white-color;
   }
 
-  #btn-three {
+  .btn-three {
     background-color: $orange-color;
-    width: 141px;
+    width: 160px;
     height: 39px;
+    float: right;
     font-family: 'Roboto', sans-serif;
   }
 }
 
+.search-style {
+  app-search {
+    width: 160%;
+  }
+
+  #btn-three {
+    right: -204%;
+  }
+
+  .disabled-style {
+    background-color: $disabled-color
+  }
+}
+
 .mat-select {
-  background-color: #ffffff;
+  background-color: $white-color;
   border-radius: 5px;
   width: 90%;
+  height: 40px;
 }
+

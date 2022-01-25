@@ -11,12 +11,23 @@ import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatInputModule } from "@angular/material/input";
 import { MatOptionModule } from "@angular/material/core";
 import { MatSelectModule } from "@angular/material/select";
+import { SearchComponent } from "../components/search/search.component";
+import { JokeListComponent } from "../components/joke-list/joke-list.component";
+import { MatIconModule } from "@angular/material/icon";
+import { ReactiveFormsModule } from "@angular/forms";
+import { MatCardModule } from "@angular/material/card";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatTableModule } from "@angular/material/table";
+import { MatListModule } from "@angular/material/list";
+
 
 @NgModule({
 	declarations: [
 		ChuckNorrisMainComponent,
 		JokeComponent,
-		JokeGeneratorComponent
+		JokeGeneratorComponent,
+		SearchComponent,
+		JokeListComponent
 	],
 	imports: [
 		CommonModule,
@@ -25,9 +36,15 @@ import { MatSelectModule } from "@angular/material/select";
 		MatDividerModule,
 		MatButtonModule,
 		MatButtonToggleModule,
-		MatInputModule,
 		MatOptionModule,
 		MatSelectModule,
+		MatIconModule,
+		ReactiveFormsModule,
+		MatCardModule,
+		MatInputModule,
+		MatFormFieldModule,
+		MatTableModule,
+		MatListModule
 	],
 	exports: [
 		ChuckNorrisMainComponent

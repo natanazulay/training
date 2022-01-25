@@ -6,4 +6,5 @@ export interface Joke {
 	updated_at: string,
 	url: string,
 	value: string,
+	isExpanded: boolean;
 }
