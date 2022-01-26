@@ -28,13 +28,6 @@ export class JokeService {
 		}
 	}
 
-	//
-	// listOfJoke$ = this.http.get<Joke[]>(this.jokeListUrl).pipe(
-	// 	// tap(data => data['result']),
-	// 	tap(data => console.log('Products', JSON.stringify(data))),
-	// 	catchError(JokeService.handleError)
-	// );
-
 	private static handleError(err: any): Observable<never> {
 		let errorMessage: string;
 		if (err.error instanceof ErrorEvent) {

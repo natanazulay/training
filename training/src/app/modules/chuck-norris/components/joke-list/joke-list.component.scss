@@ -1,0 +1,17 @@
+@import "../../../../../styles";
+
+table {
+  margin-top: -3%;
+  width: 65%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+
+}
+.even-class{
+  height: 0;
+}
+#row-style:hover {
+  background-color: $row-hover;
+}
+
