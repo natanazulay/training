@@ -1,9 +1,9 @@
 export interface Joke {
 	categories: Array<any>,
-	created_at: string,
+	createDate: string,
 	icon_url: string,
 	id: string,
-	updated_at: string,
+	updatedDate: string,
 	url: string,
 	value: string,
 	isExpanded: boolean;

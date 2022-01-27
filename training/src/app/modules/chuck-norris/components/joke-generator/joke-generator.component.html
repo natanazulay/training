@@ -1,25 +1,36 @@
-<div [ngClass]="{'search-style': isSearchMode}" *ngIf="isSearchMode" class="buttons-container">
-    <a>Key word(s)</a>
-    <app-search (generateJokesOnSearchMode)="onSearch($event)"
-                (generateJokesOnClickMode)="this.searchKey = $event"
-    ></app-search>
-    <button [ngClass]="{'disabled-style': this.searchKey.length < 3}"
-            [disabled]="this.searchKey.length < 3"
-            (click)="onClick(this.searchKey)" class="btn-three" id="btn-three" mat-flat-button>Go!
-    </button>
+<div *ngIf="isSearchMode; else randMode">
+    <div [ngClass]="{'search-style': isSearchMode}">
+        <div class="key-word-style">
+            <a>Key word(s)</a>
+            <app-search (generateJokesOnSearchMode)="onSearch($event)"
+                        (generateJokesOnClickMode)="this.searchKey = $event"
+                        (buttonShouldByDisable)="this.disable = $event"
+            ></app-search>
+        </div>
+        <button [ngClass]="{'disabled-style': this.disable}"
+                [disabled]="this.disable"
+                (click)="onClick(this.searchKey)" class="btn-three-search" mat-flat-button>Go!
+        </button>
+    </div>
 </div>
 
-<div *ngIf="!isSearchMode" class="buttons-container">
-    <a>Your name</a>
-    <app-search></app-search>
-    <a>Category</a>
-    <mat-select>
-        <mat-option value="option1">Option 1</mat-option>
-        <mat-option value="option2">Option 2</mat-option>
-        <mat-option value="option3">Option 3</mat-option>
-    </mat-select>
-    <button (click)="onClick(this.searchKey)" class="btn-three" mat-flat-button>Go!</button>
-</div>
+<ng-template #randMode>
+    <div class="random-container">
+        <div class="your-name-style">
+            <a>Your name</a>
+            <app-search></app-search>
+        </div>
+        <div class="category-style">
+            <a>Category</a>
+            <mat-select id="select-container-random">
+                <mat-option value="option1">Option 1</mat-option>
+                <mat-option value="option2">Option 2</mat-option>
+                <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+        </div>
+        <button (click)="onClick(this.searchKey)" class="btn-three-random" mat-flat-button>Go!</button>
+    </div>
+</ng-template>
 
 <div *ngIf="joke && !isSearchMode">
     <app-joke [joke]="joke"></app-joke>

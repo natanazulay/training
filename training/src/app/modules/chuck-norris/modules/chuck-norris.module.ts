@@ -19,6 +19,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTableModule } from "@angular/material/table";
 import { MatListModule } from "@angular/material/list";
+import { MatPaginatorModule } from "@angular/material/paginator";
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { MatListModule } from "@angular/material/list";
 		MatInputModule,
 		MatFormFieldModule,
 		MatTableModule,
-		MatListModule
+		MatListModule,
+		MatPaginatorModule
 	],
 	exports: [
 		ChuckNorrisMainComponent

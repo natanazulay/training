@@ -1,7 +1,13 @@
 <div *ngIf="joke" class="mat-card">
-    <blockquote *ngIf="joke" class="quote-style">
-        <p class="joke-value">{{joke.value}}</p>
-    </blockquote>
+    <div *ngIf="joke" class="joke-value">
+        <h1 id="open-quot">
+            {{'&quot;'}}
+        </h1>
+        {{joke.value}}
+        <h1 id="close-quot">
+            {{'&quot;'}}
+        </h1>
+    </div>
 </div>
 
 

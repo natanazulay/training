@@ -8,7 +8,7 @@
                    type="text"
                    formControlName="searchKey">
             <mat-error
-                    *ngIf="(searchKey?.touched || searchKey?.dirty) && searchKey?.invalid">{{getErrorMessage()}}
+                    *ngIf="(searchKeyFormControl?.touched || searchKeyFormControl?.dirty) && searchKeyFormControl?.invalid">{{getErrorMessage()}}
             </mat-error>
         </div>
     </mat-form-field>

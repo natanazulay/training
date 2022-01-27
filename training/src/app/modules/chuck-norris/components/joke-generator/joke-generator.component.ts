@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Joke } from "../../models/joke.modle";
 
-
 @Component({
 	selector: 'app-joke-generator',
 	templateUrl: './joke-generator.component.html',
@@ -9,9 +8,11 @@ import { Joke } from "../../models/joke.modle";
 })
 export class JokeGeneratorComponent {
 
-	public searchKey: string = "";
-	@Input() public jokes: Joke[];
-	@Input() public joke: Joke;
+	public disable: boolean = true;
+	public searchKey: string;
+
+	@Input() public joke: Joke | null;
+	@Input() public jokes: Joke[] | null;
 	@Input() public isSearchMode: boolean;
 	@Output() private generateJokeWasClicked: EventEmitter<void>  = new EventEmitter<void>()
 	@Output() private generateJokeWasSearch: EventEmitter<string> = new EventEmitter<string>()
@@ -24,4 +25,5 @@ export class JokeGeneratorComponent {
 	public onSearch(searchKey: string): void {
 		this.generateJokeWasSearch.emit(searchKey);
 	}
+
 }

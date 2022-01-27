@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { JokeService } from "../../services/joke/joke.service";
-import { Observable, pluck } from "rxjs";
+import { Observable } from "rxjs";
+import { Joke } from "../../models/joke.modle";
 
 @Component({
 	selector: 'app-chuck-norris-main',
@@ -9,10 +10,10 @@ import { Observable, pluck } from "rxjs";
 })
 export class ChuckNorrisMainComponent {
 
-	public joke$: Observable<any>;
-	public jokes$: Observable<any>
+	public joke$: Observable<Joke>;
+	public jokes$: Observable<Joke[]>
 	public isSearchMode: boolean = true;
-	private searchKey: string    = "";
+	private searchKey: string;
 
 	constructor(private jokeService: JokeService) {
 	}
@@ -21,17 +22,16 @@ export class ChuckNorrisMainComponent {
 		this.isSearchMode = !this.isSearchMode;
 	}
 
-	public generateJoke(): void {
+	public generateRandomJoke(): void {
 		this.joke$ = this.jokeService.getRandomJoke();
 	}
 
-	public generateJokeSearch(searchKey: string): void {
+	public generateSearchJoke(searchKey: string): void {
 		if (searchKey !== this.searchKey) {
-			this.jokes$ = this.jokeService.getSearchListJokes(searchKey).pipe(
-				pluck('result')
-			);
+			this.jokes$ = this.jokeService.getSearchListJokes(searchKey);
 		}
-		this.searchKey = searchKey
+		this.searchKey = searchKey;
 	}
+
 }
 
