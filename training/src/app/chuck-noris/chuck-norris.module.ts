@@ -9,23 +9,37 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "../app-routing.module";
+import { SearchComponent } from "./search/search.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatTableModule } from "@angular/material/table";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
+import { MatInputModule } from "@angular/material/input";
+import { JokeListComponent } from "./joke-list/joke-list.component";
 
 
 @NgModule({
-  declarations: [
-    ChuckNorrisMain,
-    JokeGeneratorComponent,
-    JokeComponent
-  ],
-  imports: [
-    MatButtonModule,
-    MatCheckboxModule,
-    CommonModule,
-    BrowserAnimationsModule,
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-  ],
-  exports: [ChuckNorrisMain],
+	declarations: [
+		ChuckNorrisMain,
+		JokeGeneratorComponent,
+		JokeComponent,
+		SearchComponent,
+		JokeListComponent
+	],
+	imports: [
+		MatButtonModule,
+		MatCheckboxModule,
+		CommonModule,
+		BrowserAnimationsModule,
+		BrowserModule,
+		HttpClientModule,
+		AppRoutingModule,
+		FormsModule,
+		MatButtonModule,
+		MatButtonToggleModule,
+		MatTableModule,
+		MatInputModule,
+		ReactiveFormsModule,
+	],
+	exports: [ChuckNorrisMain],
 })
-export class ChuckNorrisModule { }
+export class ChuckNorrisModule {}

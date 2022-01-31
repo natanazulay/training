@@ -4,8 +4,15 @@
         <img id="chuck-pic" src="../assets/unnamed-3.png">
     </div>
     <div class="nav-buttons">
-        <button id="random-button" mat-raised-button>Random</button>
-        <button id="search-button" mat-raised-button color="warn">Search</button>
+        <button [ngClass]="clicked==='random' ? 'search-button' : 'random-button'" id="random" mat-raised-button
+                (click)='onRandomClick()'>Random
+        </button>
+        <button [ngClass]="clicked==='search' ? 'search-button' : 'random-button'" id="search" mat-raised-button
+                (click)='onSearchClick()'>Search
+        </button>
     </div>
-    <app-joke-generator [joke] = joke (generateJokeClicked)= 'onGenerateJokeClick()'></app-joke-generator>
+    <app-joke-generator (generateRandomJokeClicked)='onGenerateJokeClick()'
+                        (generateJokesClicked)="getJokesFromSearch($event)"
+                        (generateJokesSearched)="getJokesFromSearch($event)"
+                        [clicked]="clicked" [jokeList]="jokeList$ | async" [joke]="joke$ | async"></app-joke-generator>
 </div>

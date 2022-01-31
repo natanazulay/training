@@ -4,7 +4,8 @@
   display: flex;
   flex-direction: column;
 }
-.main-pic{
+
+.main-pic {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -18,6 +19,7 @@
   width: 100%;
   height: 100%;
 }
+
 #chuck-pic {
   position: absolute;
   max-width: 20%;
@@ -28,7 +30,7 @@
   margin-bottom: 15px;
 }
 
-.nav-buttons{
+.nav-buttons {
   align-items: center;
   justify-content: center;
   display: flex;
@@ -36,36 +38,45 @@
   margin-bottom: 44px;
 }
 
-#random-button{
+
+.random-button {
   width: 105px;
   height: 39px;
-  border-radius: 4px 0px 0px 4px;
 }
 
-#search-button{
-  border-radius: 0px 4px 4px 0px;
+.search-button {
   color: $white-color;
   width: 105px;
   height: 39px;
+  background-color: $orange-color;
 }
 
-.rectangle-name{
+#search {
+  border-radius: 0px 4px 4px 0px;
+}
+
+#random {
+  border-radius: 4px 0px 0px 4px;
+}
+
+.rectangle-name {
   width: 200px;
   height: 44px;
   box-sizing: border-box;
   margin-right: 15px;
 }
 
-.name, .category{
+.name, .category {
   margin-right: 15px;
 }
 
-.rectangle-category{
+.rectangle-category {
   width: 200px;
   height: 44px;
   box-sizing: border-box;
 }
-.body{
+
+.body {
   display: flex;
   align-items: center;
   justify-content: center;
