@@ -8,19 +8,13 @@ import { Joke } from "../../models/joke.modle";
 })
 export class JokeGeneratorComponent {
 
-	public disable: boolean = true;
+	public disable: boolean                                       = true;
 	public searchKey: string;
-
-	@Input() public joke: Joke | null;
-	@Input() public jokes: Joke[] | null;
+	@Input() public joke: Joke;
+	@Input() public jokes: Joke[];
 	@Input() public isSearchMode: boolean;
-	@Output() private generateJokeWasClicked: EventEmitter<void>  = new EventEmitter<void>()
+	@Output() public generateJokeWasClicked: EventEmitter<void>   = new EventEmitter<void>()
 	@Output() private generateJokeWasSearch: EventEmitter<string> = new EventEmitter<string>()
-
-	public onClick(searchKey: string): void {
-		this.generateJokeWasClicked.emit();
-		this.generateJokeWasSearch.emit(searchKey);
-	}
 
 	public onSearch(searchKey: string): void {
 		this.generateJokeWasSearch.emit(searchKey);

@@ -10,5 +10,6 @@ export class JokeComponent {
 
 	@Input() public joke: Joke;
 	@Input() public jokes: Joke[];
+	@Input() public isSearchMode: boolean;
 
 }

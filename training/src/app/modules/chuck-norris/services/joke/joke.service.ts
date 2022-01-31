@@ -15,7 +15,7 @@ export class JokeService {
 
 	public getRandomJoke(): Observable<Joke> {
 		return this.http.get<Joke>(this.RandomJokeUrl).pipe(
-			catchError(JokeService.handleError)
+			catchError(JokeService.handleError),
 		);
 	}
 

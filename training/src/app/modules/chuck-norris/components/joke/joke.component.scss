@@ -1,16 +1,50 @@
 @import "../../../../../styles";
 
-.mat-card {
-  line-height: 1.5;
-  border: 2px dashed $blue-color;
-  margin-right: 15%;
-  margin-left: 15%;
-  padding: 3% 15% 3% 15%;
+.wrapper {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.search-wrapper-container {
+  .mat-card {
+    line-height: 1.5;
+    border: 4px dashed $weakly-blue-color;
+    border-bottom: 3px solid $weakly-blue-color;
+    border-left: 3px solid $weakly-blue-color;
+    padding: 15px 30px;
+    margin: 20px 100px;
+    background-color: $white-blue-color;
+  }
+
+  .joke-value {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: $white-blue-color;
+    color: $weakly-blue-color;
+  }
+}
+
+.random-wrapper-container {
+  .mat-card {
+    line-height: 1.5;
+    border: 4px dashed $weakly-blue-color;
+    border-bottom: 3px solid $weakly-blue-color;
+    border-left: 3px solid $weakly-blue-color;
+    padding: 15px 30px;
+    margin: 20px 220px;
+    background-color: white;
+  }
+
+  .joke-value {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: $white-color;
+    color: $weakly-blue-color;
+  }
 }
 
 .joke-value {
-  color: $blue-color;
-  font-size: 20px;
+  font-size: 25px;
   text-align: center;
 }
 

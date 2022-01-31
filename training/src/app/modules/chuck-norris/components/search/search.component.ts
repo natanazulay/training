@@ -2,7 +2,6 @@ import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { debounceTime, Subject, takeUntil, tap } from "rxjs";
 
-
 @Component({
 	selector: 'app-search',
 	templateUrl: './search.component.html',
@@ -12,10 +11,11 @@ import { debounceTime, Subject, takeUntil, tap } from "rxjs";
 export class SearchComponent implements OnInit {
 
 	public searchForm: FormGroup;
+	private searchKeyIsValid: boolean;
 	private componentDestroyed$: Subject<void>                        = new Subject();
 	@Output() private generateJokesOnClickMode: EventEmitter<string>  = new EventEmitter<string>();
 	@Output() private generateJokesOnSearchMode: EventEmitter<string> = new EventEmitter<string>();
-	@Output() private buttonShouldByDisable: EventEmitter<boolean>    = new EventEmitter<boolean>();
+	@Output() private isSearchValid: EventEmitter<boolean>            = new EventEmitter<boolean>();
 
 	constructor(private fb: FormBuilder) {
 	}
@@ -33,31 +33,34 @@ export class SearchComponent implements OnInit {
 		this.getJokesWhenSearchKeyChange();
 	}
 
-	get searchKeyFormControl(): AbstractControl | null {
+	get searchKeyFormControl(): AbstractControl {
 		return this.searchForm.get('searchKey');
 	}
 
-	getJokesWhenSearchKeyChange(): void {
+	public getJokesWhenSearchKeyChange(): void {
 		this.searchKeyFormControl?.valueChanges.pipe(
 			tap((searchValue: string) => {
-					if (this.searchKeyFormControl?.valid) {
-						this.generateJokesOnClickMode.emit(searchValue);
-						this.buttonShouldByDisable.emit(false);
-					} else {
-						this.buttonShouldByDisable.emit(true);
-					}
+				this.searchKeyIsValid = this.searchKeyFormControl?.valid
+				this.SearchKeyValidation(searchValue)
 				}
 			),
 			debounceTime(1000),
 			takeUntil(this.componentDestroyed$)
 		).subscribe((searchValue: string) => {
-			if (this.searchKeyFormControl?.valid) {
+			if (this.searchKeyIsValid) {
 				this.setItems(searchValue);
-				this.buttonShouldByDisable.emit(false);
-			} else {
-				this.buttonShouldByDisable.emit(true);
 			}
 		});
+	}
+
+	public SearchKeyValidation(searchValue:string): void {
+		if (this.searchKeyIsValid) {
+			this.isSearchValid.emit(false);
+			this.generateJokesOnClickMode.emit(searchValue);
+		} else {
+			this.isSearchValid.emit(true);
+		}
+
 	}
 
 	public setItems(searchKey: string): void {

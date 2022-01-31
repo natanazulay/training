@@ -21,8 +21,7 @@
 
         <ng-container matColumnDef="expandedDetail">
             <td mat-cell *matCellDef="let joke" [attr.colspan]="displayedJokesColumnsList.length">
-                <div *ngIf="joke['isExpanded']"
-                     [@detailExpand]="'expanded'">
+                <div *ngIf="joke['isExpanded'] && joke['id'] === this.jokeClickedId">
                     <app-joke (click)="onClickExpended(joke)" [joke]="joke"></app-joke>
                 </div>
             </td>
