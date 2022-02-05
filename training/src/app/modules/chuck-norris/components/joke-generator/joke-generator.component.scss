@@ -1,14 +1,20 @@
 @import "../../../../../styles";
 
-.search-style {
+@mixin rectangle{
+  position: relative;
   display: grid;
-  grid-template-columns:  1fr 0.3fr;
-  grid-gap: 70px;
   background-color: $off-white-color;
-  border-radius: 0.4em;
-  margin: 55px auto;
-  width: 80%;
   padding: 20px 20px 5px 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.search-style {
+  @include rectangle;
+  grid-template-columns:  1fr 0.3fr;
 
   .key-word-style {
     display: grid;
@@ -17,14 +23,9 @@
 }
 
 .random-container {
-  display: grid;
+  @include rectangle;
   grid-template-columns:  1fr 1fr 0.7fr;
   grid-gap: 10px;
-  background-color: $off-white-color;
-  border-radius: 0.4em;
-  width: 80%;
-  margin: 55px auto 0;
-  padding: 20px 20px 5px 20px;
 
   mat-select {
     background-color: $white-color;
@@ -45,18 +46,18 @@
   }
 }
 
+.btn-three-random, .btn-three-search {
+  background-color: $orange-color;
+  height: 42px;
+  font-family: 'Roboto', sans-serif;
+}
+
 a {
   padding-top: 10px;
 }
 
 button {
   color: $white-color;
-}
-
-.btn-three-random, .btn-three-search {
-  background-color: $orange-color;
-  height: 42px;
-  font-family: 'Roboto', sans-serif;
 }
 
 @media screen and (max-width: 680px) {
@@ -70,11 +71,11 @@ button {
     }
 
     button {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+      position: relative;
       margin-top: 30px;
-      width: 25%;
+      width: 100px;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
   }
@@ -82,11 +83,11 @@ button {
     display: block;
 
     button {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 15px;
-      width: 25%;
+      position: relative;
+      width: 100px;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
+
 }

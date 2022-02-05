@@ -9,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class JokeListComponent implements OnInit {
 
-	@Input() jokes: Joke[];
+	@Input() public jokes: Joke[];
 	public jokeClickedId: string;
 	public isTableExpanded: boolean            = false;
 	public jokeList: MatTableDataSource<Joke>  = new MatTableDataSource();

@@ -13,8 +13,8 @@ export class SearchComponent implements OnInit {
 	public searchForm: FormGroup;
 	private searchKeyIsValid: boolean;
 	private componentDestroyed$: Subject<void>                        = new Subject();
-	@Output() private generateJokesOnClickMode: EventEmitter<string>  = new EventEmitter<string>();
 	@Output() private generateJokesOnSearchMode: EventEmitter<string> = new EventEmitter<string>();
+	@Output() private sendSearchKey: EventEmitter<string>             = new EventEmitter<string>();
 	@Output() private isSearchValid: EventEmitter<boolean>            = new EventEmitter<boolean>();
 
 	constructor(private fb: FormBuilder) {
@@ -40,31 +40,26 @@ export class SearchComponent implements OnInit {
 	public getJokesWhenSearchKeyChange(): void {
 		this.searchKeyFormControl?.valueChanges.pipe(
 			tap((searchValue: string) => {
-				this.searchKeyIsValid = this.searchKeyFormControl?.valid
-				this.SearchKeyValidation(searchValue)
+					this.searchKeyIsValid = this.searchKeyFormControl?.valid
+					this.searchKeyValidation(searchValue)
 				}
 			),
-			debounceTime(1000),
+			debounceTime(5000),
 			takeUntil(this.componentDestroyed$)
 		).subscribe((searchValue: string) => {
 			if (this.searchKeyIsValid) {
-				this.setItems(searchValue);
+				this.generateJokesOnSearchMode.emit(searchValue);
 			}
 		});
 	}
 
-	public SearchKeyValidation(searchValue:string): void {
+	public searchKeyValidation(searchValue: string): void {
 		if (this.searchKeyIsValid) {
 			this.isSearchValid.emit(false);
-			this.generateJokesOnClickMode.emit(searchValue);
+			this.sendSearchKey.emit(searchValue);
 		} else {
 			this.isSearchValid.emit(true);
 		}
-
-	}
-
-	public setItems(searchKey: string): void {
-		this.generateJokesOnSearchMode.emit(searchKey);
 	}
 
 	public getErrorMessage() {
@@ -76,6 +71,5 @@ export class SearchComponent implements OnInit {
 
 	ngOnDestroy(): void {
 		this.componentDestroyed$.next();
-		this.componentDestroyed$.complete();
 	}
 }

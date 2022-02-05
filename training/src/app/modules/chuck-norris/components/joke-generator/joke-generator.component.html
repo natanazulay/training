@@ -3,7 +3,7 @@
         <div class="key-word-style">
             <a>Key word(s)</a>
             <app-search (generateJokesOnSearchMode)="onSearch($event)"
-                        (generateJokesOnClickMode)="this.searchKey = $event"
+                        (sendSearchKey)="this.searchKey = $event"
                         (isSearchValid)="this.disable = $event"
             ></app-search>
         </div>
@@ -32,7 +32,7 @@
     </div>
 </ng-template>
 <div *ngIf="joke">
-        <app-joke *ngIf="!isSearchMode" [joke]="joke" [isSearchMode]="!isSearchMode"></app-joke>
+    <app-joke *ngIf="!isSearchMode" [joke]="joke" [isSearchMode]="!isSearchMode"></app-joke>
 </div>
 <div *ngIf="jokes && isSearchMode">
     <app-joke-list [jokes]="jokes"></app-joke-list>

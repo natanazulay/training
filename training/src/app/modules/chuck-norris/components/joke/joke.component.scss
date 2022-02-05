@@ -1,5 +1,14 @@
 @import "../../../../../styles";
 
+@mixin matCardStyle {
+  line-height: 1.5;
+  background-color: $white-blue-color;
+  border: 4px dashed $weakly-blue-color;
+  border-bottom: 3px solid $weakly-blue-color;
+  border-left: 3px solid $weakly-blue-color;
+  padding: 15px 30px;
+}
+
 .wrapper {
   padding-bottom: 20px;
   padding-top: 20px;
@@ -7,13 +16,9 @@
 
 .search-wrapper-container {
   .mat-card {
+    @include matCardStyle;
     line-height: 1.5;
-    border: 4px dashed $weakly-blue-color;
-    border-bottom: 3px solid $weakly-blue-color;
-    border-left: 3px solid $weakly-blue-color;
     padding: 15px 30px;
-    margin: 20px 100px;
-    background-color: $white-blue-color;
   }
 
   .joke-value {
@@ -26,13 +31,14 @@
 
 .random-wrapper-container {
   .mat-card {
-    line-height: 1.5;
-    border: 4px dashed $weakly-blue-color;
-    border-bottom: 3px solid $weakly-blue-color;
-    border-left: 3px solid $weakly-blue-color;
-    padding: 15px 30px;
-    margin: 20px 220px;
+    @include matCardStyle;
+    position: relative;
+    width: 40%;
+    left: 50%;
     background-color: white;
+    margin-top: 50px;
+    margin-bottom: 150px;
+    transform: translateX(-50%);
   }
 
   .joke-value {
@@ -57,3 +63,4 @@
   float: right;
   font-size: 40px;
 }
+

@@ -1,13 +1,13 @@
 @import "../../../../../styles";
 
 table {
-  width: 78%;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
-  border-radius: 2px;
-  border-color: $white-color;
-  margin-top: -25px;
+  position: relative;
+  left: 50%;
+  width: 100%;
+  margin-top: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+  transform: translateX(-50%);
 }
 
 .mat-elevation-z8 {
