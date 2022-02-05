@@ -44,7 +44,7 @@ export class SearchComponent implements OnInit {
 					this.searchKeyValidation(searchValue)
 				}
 			),
-			debounceTime(5000),
+			debounceTime(1000),
 			takeUntil(this.componentDestroyed$)
 		).subscribe((searchValue: string) => {
 			if (this.searchKeyIsValid) {
