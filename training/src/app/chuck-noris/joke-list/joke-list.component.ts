@@ -19,10 +19,9 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 
 export class JokeListComponent implements OnInit {
 	@Input() public jokeList: Joke[];
-	public isDisplayed: boolean;
 	public jokeListTable: MatTableDataSource<Joke> = new MatTableDataSource();
 	public columnsToDisplay: string[]              = ['id', 'category', 'date_created'];
-	expandedElement: Joke | null;
+	expandedElement: Joke;
 
 	ngOnInit(): void {
 		this.jokeListTable.data = this.jokeList;

@@ -42,43 +42,16 @@
 .random-button {
   width: 105px;
   height: 39px;
-}
-
-.search-button {
-  color: $white-color;
-  width: 105px;
-  height: 39px;
-  background-color: $orange-color;
-}
-
-#search {
-  border-radius: 0px 4px 4px 0px;
-}
-
-#random {
   border-radius: 4px 0px 0px 4px;
 }
 
-.rectangle-name {
-  width: 200px;
-  height: 44px;
-  box-sizing: border-box;
-  margin-right: 15px;
+.search-button {
+  width: 105px;
+  height: 39px;
+  border-radius: 0px 4px 4px 0px;
 }
 
-.name, .category {
-  margin-right: 15px;
-}
-
-.rectangle-category {
-  width: 200px;
-  height: 44px;
-  box-sizing: border-box;
-}
-
-.body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+.selected-button{
+  background-color: $orange-color;
+  color: $white-color;
 }

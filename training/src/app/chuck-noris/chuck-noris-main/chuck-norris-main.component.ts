@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { JokeGeneratorService } from "../joke-generator.service";
-import { Observable, Subject } from "rxjs";
+import { Observable } from "rxjs";
 import { Joke } from "../joke";
 
 @Component({
@@ -12,28 +12,27 @@ import { Joke } from "../joke";
 export class ChuckNorrisMain {
 	public jokeList$: Observable<Joke[]>;
 	public joke$: Observable<Joke>;
-	public clicked: string              = 'random';
+	public changeMode: boolean = false;
 	public searchInput: string;
-	public searchTerms: Subject<string> = new Subject<string>();
 
 	constructor(private jokeService: JokeGeneratorService) {
 	}
 
-	public getJokesFromSearch(term: string): void {
-		this.searchInput = term;
-		this.jokeList$   = this.jokeService.getJokeList(term);
+	public getJokesFromSearch(inputKey: string): void {
+		if (this.searchInput != inputKey) {
+			this.jokeList$ = this.jokeService.getJokeList(inputKey);
+		}
+		this.searchInput = inputKey;
 	}
 
 	onGenerateJokeClick(): void {
 		this.joke$ = this.jokeService.generateJoke();
 	}
 
-	onSearchClick(): void {
-		this.clicked = 'search'
-	}
-
-	onRandomClick(): void {
-		this.clicked = 'random';
+	onChangeModeClick(mode: string): void {
+		if ((mode === 'search' && !this.changeMode) || (mode === 'random' && this.changeMode)) {
+			this.changeMode = !this.changeMode;
+		}
 	}
 
 }

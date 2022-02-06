@@ -1,5 +1,12 @@
 @import "../../../styles";
 
-#search-box{
-  background-color: $white-color;
+$small: 500px;
+
+.rectangle-search{
+  width: 350px;
+  height: 30px;
+  @media screen and (max-width: $small){
+    width: 150px;
+    height: 20px
+  }
 }

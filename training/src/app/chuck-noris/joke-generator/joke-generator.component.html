@@ -1,20 +1,22 @@
-<div class="body">
+<div class="main">
     <div class="info-container">
-        <div *ngIf="clicked === 'random'" class="name-block">
-            <label class="name" for="name">Your name</label>
-            <input class="rectangle-name" type="text" id="name" name="name">
-        </div>
-        <div *ngIf="clicked === 'random'" class="category-block">
-            <label class="category" id="category">Category</label>
-            <select class="rectangle-category" for="category" name="category">
-                <option value="all-categories">All categories</option>
-                <option value="animals">Animals</option>
-            </select>
-        </div>
-        <app-search *ngIf="clicked === 'search'" (generateJokesFromClick)="onGenerateJokesFromClick($event)"
+        <ng-template #random_block>
+            <div class="name-block">
+                <label class="rectangle-name" for="name"> Your name </label>
+                <input class="rectangle-name" type="text" id="name" name="name">
+            </div>
+            <div class="category-block">
+                <label class="rectangle-category" id="category"> Category </label>
+                <select class="rectangle-category" for="category" name="category">
+                    <option value="all-categories"> All categories </option>
+                    <option value="animals"> Animals </option>
+                </select>
+            </div>
+        </ng-template>
+        <app-search *ngIf="mode; else random_block" (generateJokesFromClick)="this.inputKey = $event"
                     (generateJokesFromSearch)="onGenerateJokesFromSearch($event)"></app-search>
-        <button id="go-button" mat-raised-button color="warn" (click)="onGenerateJokesFromClick(this.term)">Go!</button>
+        <button id="go-button" mat-raised-button color="warn" (click)="onGenerateJokesFromClick(this.inputKey)"> Go! </button>
     </div>
-    <app-joke-list [jokeList]="jokeList" *ngIf="jokeList && clicked == 'search'"></app-joke-list>
-    <app-joke [joke]="joke" *ngIf="joke && clicked == 'random'"></app-joke>
+    <app-joke-list [jokeList]="jokeList" *ngIf="jokeList && mode"></app-joke-list>
+    <app-joke [joke]="joke" *ngIf="joke && !mode"></app-joke>
 </div>

@@ -11,7 +11,7 @@ export class SearchComponent implements OnInit {
 	public searchForm: FormGroup;
 	@Output() public generateJokesFromSearch: EventEmitter<string> = new EventEmitter<string>();
 	@Output() public generateJokesFromClick: EventEmitter<string>  = new EventEmitter<string>();
-	public shouldDestroy: Subject<void>                            = new Subject<void>();
+	public untilDestroy: Subject<void>                             = new Subject<void>();
 
 	constructor(private fb: FormBuilder) {
 	}
@@ -21,26 +21,24 @@ export class SearchComponent implements OnInit {
 			searchInput: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(120)]]
 		});
 
-		this.searchForm.get('searchInput')?.valueChanges
+		this.searchForm.get('searchInput').valueChanges
 		.pipe(
-			tap((term: string) => {
-				if (term != this.searchForm.get('searchInput').value) {
-					if (this.searchForm.get('searchInput')?.valid) {
-						this.generateJokesFromClick.emit(term)
-					}
+			tap((inputKey: string) => {
+				if (this.searchForm.get('searchInput')?.valid) {
+					this.generateJokesFromClick.emit(inputKey);
 				}
 			}),
-			debounceTime(300),
+			debounceTime(1000),
 			distinctUntilChanged(),
-			takeUntil(this.shouldDestroy))
-		.subscribe((term) => {
+			takeUntil(this.untilDestroy)
+		).subscribe((inputKey) => {
 			if (this.searchForm.get('searchInput')?.valid) {
-				this.generateJokesFromSearch.emit(term);
+				this.generateJokesFromSearch.emit(inputKey);
 			}
 		});
 	}
 
 	public ngOnDestroy() {
-		this.shouldDestroy.unsubscribe();
+		this.untilDestroy.next();
 	}
 }
