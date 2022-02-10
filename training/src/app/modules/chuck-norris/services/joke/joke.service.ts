@@ -15,6 +15,7 @@ export class JokeService {
 
 	public getRandomJoke(): Observable<Joke> {
 		return this.http.get<Joke>(this.RandomJokeUrl).pipe(
+			map((response: Joke) => this.parseToJoke(response)),
 			catchError(JokeService.handleError),
 		);
 	}
@@ -23,7 +24,9 @@ export class JokeService {
 		return this.http.get<any>(this.jokeListUrl, { params: { query: searchKey } })
 		.pipe(
 			pluck('result'),
-			map(response => response.slice(0, 20) as Joke[]),
+			map((response: Joke[]) => response.slice(0, 20).map(
+				(joke: Joke) => this.parseToJoke(joke))
+			),
 			catchError(JokeService.handleError))
 	}
 
@@ -36,5 +39,17 @@ export class JokeService {
 		}
 		console.error(err);
 		return throwError(errorMessage);
+	}
+
+	public parseToJoke(data: any): Joke {
+		return {
+			categories: data[ 'categories' ],
+			createDate: data[ 'created_at' ],
+			iconUrl: data[ 'icon_url' ],
+			id: data[ 'id' ],
+			updatedDate: data[ 'updated_at' ],
+			url: data[ 'url' ],
+			value: data[ 'value' ],
+		} as Joke;
 	}
 }

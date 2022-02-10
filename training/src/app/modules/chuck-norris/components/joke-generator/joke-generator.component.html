@@ -31,12 +31,11 @@
         <button (click)="this.generateJokeWasClicked.emit();" class="btn-three-random" mat-flat-button>Go!</button>
     </div>
 </ng-template>
+
 <div *ngIf="joke">
     <app-joke *ngIf="!isSearchMode" [joke]="joke" [isSearchMode]="!isSearchMode"></app-joke>
 </div>
+
 <div *ngIf="jokes && isSearchMode">
     <app-joke-list [jokes]="jokes"></app-joke-list>
 </div>
-
-
-
