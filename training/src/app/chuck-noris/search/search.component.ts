@@ -17,28 +17,32 @@ export class SearchComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		this.initForm()
+	}
+
+	public ngOnDestroy() {
+		this.untilDestroy.next();
+	}
+
+	private initForm(): void {
 		this.searchForm = this.fb.group({
 			searchInput: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(120)]]
 		});
 
 		this.searchForm.get('searchInput').valueChanges
 		.pipe(
-			tap((inputKey: string) => {
+			tap((searchedValue: string) => {
 				if (this.searchForm.get('searchInput')?.valid) {
-					this.generateJokesFromClick.emit(inputKey);
+					this.generateJokesFromClick.emit(searchedValue);
 				}
 			}),
 			debounceTime(1000),
 			distinctUntilChanged(),
 			takeUntil(this.untilDestroy)
-		).subscribe((inputKey) => {
+		).subscribe((searchedValue) => {
 			if (this.searchForm.get('searchInput')?.valid) {
-				this.generateJokesFromSearch.emit(inputKey);
+				this.generateJokesFromSearch.emit(searchedValue);
 			}
 		});
-	}
-
-	public ngOnDestroy() {
-		this.untilDestroy.next();
 	}
 }

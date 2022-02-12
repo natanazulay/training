@@ -12,27 +12,25 @@ import { Joke } from "../joke";
 export class ChuckNorrisMain {
 	public jokeList$: Observable<Joke[]>;
 	public joke$: Observable<Joke>;
-	public changeMode: boolean = false;
+	public isSearchMode: boolean = false;
 	public searchInput: string;
 
 	constructor(private jokeService: JokeGeneratorService) {
 	}
 
-	public getJokesFromSearch(inputKey: string): void {
-		if (this.searchInput != inputKey) {
-			this.jokeList$ = this.jokeService.getJokeList(inputKey);
+	public getJokesFromSearch(searchedValue: string): void {
+		if (this.searchInput != searchedValue) {
+			this.jokeList$ = this.jokeService.getJokeList(searchedValue);
 		}
-		this.searchInput = inputKey;
+		this.searchInput = searchedValue;
 	}
 
 	onGenerateJokeClick(): void {
 		this.joke$ = this.jokeService.generateJoke();
 	}
 
-	onChangeModeClick(mode: string): void {
-		if ((mode === 'search' && !this.changeMode) || (mode === 'random' && this.changeMode)) {
-			this.changeMode = !this.changeMode;
-		}
+	onChangeModeClick(isSearchMode: boolean): void {
+		this.isSearchMode = isSearchMode;
 	}
 
 }

@@ -20,8 +20,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 export class JokeListComponent implements OnInit {
 	@Input() public jokeList: Joke[];
 	public jokeListTable: MatTableDataSource<Joke> = new MatTableDataSource();
-	public columnsToDisplay: string[]              = ['id', 'category', 'date_created'];
-	expandedElement: Joke;
+	public columnsToDisplay: string[]              = ['id', 'category', 'created_at'];
+	public expandedElement: Joke;
 
 	ngOnInit(): void {
 		this.jokeListTable.data = this.jokeList;

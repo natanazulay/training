@@ -1,5 +1,7 @@
 <div class="main">
     <div class="info-container">
+        <app-search *ngIf="isSearchMode; else random_block" (generateJokesFromClick)="this.searchedValue = $event"
+                    (generateJokesFromSearch)="onGenerateJokesFromSearch($event)"></app-search>
         <ng-template #random_block>
             <div class="name-block">
                 <label class="rectangle-name" for="name"> Your name </label>
@@ -13,10 +15,8 @@
                 </select>
             </div>
         </ng-template>
-        <app-search *ngIf="mode; else random_block" (generateJokesFromClick)="this.inputKey = $event"
-                    (generateJokesFromSearch)="onGenerateJokesFromSearch($event)"></app-search>
-        <button id="go-button" mat-raised-button color="warn" (click)="onGenerateJokesFromClick(this.inputKey)"> Go! </button>
+        <button id="go-button" mat-raised-button color="warn" (click)="onGenerateJokesFromClick(this.searchedValue)"> Go! </button>
     </div>
-    <app-joke-list [jokeList]="jokeList" *ngIf="jokeList && mode"></app-joke-list>
-    <app-joke [joke]="joke" *ngIf="joke && !mode"></app-joke>
+    <app-joke-list [jokeList]="jokeList" *ngIf="jokeList && isSearchMode"></app-joke-list>
+    <app-joke [joke]="joke" *ngIf="joke && !isSearchMode"></app-joke>
 </div>

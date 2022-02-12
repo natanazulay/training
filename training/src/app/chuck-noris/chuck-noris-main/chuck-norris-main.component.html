@@ -4,15 +4,15 @@
         <img id="chuck-pic" src="../assets/unnamed-3.png">
     </div>
     <div class="nav-buttons">
-        <button [ngClass]="!changeMode ? 'selected-button':''" class="random-button" mat-raised-button
-                (click)='onChangeModeClick("random")'>Random
+        <button [ngClass]="{'selected-button': !isSearchMode}" class="random-button" mat-raised-button
+                (click)='onChangeModeClick(false)'>Random
         </button>
-        <button [ngClass]="changeMode ? 'selected-button':''" class="search-button" mat-raised-button
-                (click)='onChangeModeClick("search")'>Search
+        <button [ngClass]="{'selected-button': isSearchMode}" class="search-button" mat-raised-button
+                (click)='onChangeModeClick(true)'>Search
         </button>
     </div>
     <app-joke-generator (generateRandomJokeClicked)='onGenerateJokeClick()'
                         (generateJokesClicked)="getJokesFromSearch($event)"
                         (generateJokesSearched)="getJokesFromSearch($event)"
-                        [mode]="changeMode" [jokeList]="jokeList$ | async" [joke]="joke$ | async"></app-joke-generator>
+                        [isSearchMode]="isSearchMode" [jokeList]="jokeList$ | async" [joke]="joke$ | async"></app-joke-generator>
 </div>

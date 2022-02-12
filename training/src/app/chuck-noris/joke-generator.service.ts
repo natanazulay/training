@@ -17,8 +17,8 @@ export class JokeGeneratorService {
 		return this.http.get<Joke>(this.jokeUrl);
 	}
 
-	getJokeList(inputKey: string): Observable<any> {
-		return this.http.get<any>(this.searchJokeUrl, { params: { query: inputKey } })
+	getJokeList(searchedValue: string): Observable<any> {
+		return this.http.get<any>(this.searchJokeUrl, { params: { query: searchedValue } })
 		.pipe(
 			pluck('result'),
 			map((data) => data.slice(0,10)),
