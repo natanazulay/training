@@ -4,24 +4,24 @@
             <th mat-header-cell *matHeaderCellDef> id</th>
             <td mat-cell *matCellDef="let joke"
                 (click)="onClickExpended(joke)">
-                {{joke['id']}} </td>
+                {{joke.id}} </td>
         </ng-container>
 
         <ng-container matColumnDef="category">
             <th mat-header-cell *matHeaderCellDef> Category</th>
             <td mat-cell *matCellDef="let joke"
-                (click)="onClickExpended(joke)"> {{joke['categories']}} </td>
+                (click)="onClickExpended(joke)"> {{joke.categories}} </td>
         </ng-container>
 
         <ng-container matColumnDef="date_created">
             <th mat-header-cell *matHeaderCellDef> Date Created</th>
             <td mat-cell *matCellDef="let joke"
-                (click)="onClickExpended(joke)"> {{joke['createDate']}} </td>
+                (click)="onClickExpended(joke)"> {{joke.createDate}} </td>
         </ng-container>
 
         <ng-container matColumnDef="expandedDetail">
             <td mat-cell *matCellDef="let joke" [attr.colspan]="displayedJokesColumnsList.length">
-                <div *ngIf="joke['isExpanded'] && joke['id'] === this.jokeClickedId">
+                <div *ngIf="joke.isExpanded && joke.id === this.jokeClickedId">
                     <app-joke (click)="onClickExpended(joke)" [joke]="joke"></app-joke>
                 </div>
             </td>
