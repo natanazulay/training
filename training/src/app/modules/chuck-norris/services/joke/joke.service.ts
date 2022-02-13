@@ -15,7 +15,7 @@ export class JokeService {
 
 	public getRandomJoke(): Observable<Joke> {
 		return this.http.get<Joke>(this.RandomJokeUrl).pipe(
-			map((response: Joke) => JokeService.parseToJoke(response)),
+			map((response: Joke) => Joke.parseToJoke(response)),
 			catchError(JokeService.handleError),
 		);
 	}
@@ -25,21 +25,9 @@ export class JokeService {
 		.pipe(
 			pluck('result'),
 			map((response: Joke[]) => response.slice(0, 20).map(
-				(joke: Joke) => JokeService.parseToJoke(joke))
+				(joke: Joke) => Joke.parseToJoke(joke))
 			),
 			catchError(JokeService.handleError))
-	}
-
-	private static parseToJoke(data: any): Joke {
-		const joke       = new Joke();
-		joke.categories  = data[ 'categories' ];
-		joke.createDate  = data[ 'created_at' ];
-		joke.iconUrl     = data[ 'icon_url' ];
-		joke.id          = data[ 'id' ];
-		joke.updatedDate = data[ 'updated_at' ];
-		joke.url         = data[ 'url' ];
-		joke.value       = data[ 'value' ];
-		return joke;
 	}
 
 	private static handleError(err: any): Observable<never> {
