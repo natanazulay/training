@@ -1,23 +1,39 @@
-<div class="top-bar">
-    <img id="top-bar-fire" src="./assets/fire-img.svg" alt="error">
-    <img id="top-bar-logo" src="./assets/chuck-norris-img.png" alt="error">
-    <img id="top-bar-title" src="./assets/title-img.png" alt="error">
+<div *ngIf="!isNotVipMode && !isVipMode">
+    <div class="top-bar">
+        <img id="top-bar-fire" src="./assets/fire-img.svg" alt="error">
+        <img id="top-bar-logo" src="./assets/chuck-norris-img.png" alt="error">
+        <img id="top-bar-title" src="./assets/title-img.png" alt="error">
+    </div>
+
+    <div class="buttons">
+        <mat-button-toggle-group id="toggle-buttons">
+            <mat-button-toggle value="Random" (click)="toggleJokeMode('random')"
+                               [ngClass]="{'white' : isSearchMode, 'orange': !isSearchMode}">
+                Random
+            </mat-button-toggle>
+            <mat-button-toggle value="Search" (click)="toggleJokeMode('search')"
+                               [ngClass]="{'orange' : isSearchMode, 'white': !isSearchMode }">
+                Search
+            </mat-button-toggle>
+            <mat-button-toggle value="vip" (click)="toggleJokeMode('vip')">
+                Vip
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+
+    <app-joke-generator [joke]="joke$ | async" [jokes]="jokes$ | async" [isSearchMode]="isSearchMode"
+                        (generateJokeWasSearch)="generateSearchJoke($event)"
+                        (generateJokeWasClicked)="generateRandomJoke()">
+    </app-joke-generator>
 </div>
 
-<div class="buttons">
-    <mat-button-toggle-group id="toggle-buttons">
-        <mat-button-toggle value="Random" (click)="toggleJokeMode()"
-                           [ngClass]="{'white' : isSearchMode, 'orange': !isSearchMode}">
-            Random
-        </mat-button-toggle>
-        <mat-button-toggle value="Search" (click)="toggleJokeMode()"
-                           [ngClass]="{'orange' : isSearchMode, 'white': !isSearchMode}">
-            Search
-        </mat-button-toggle>
-    </mat-button-toggle-group>
+<div *ngIf="isVipMode">
+    <div class="vip-header">
+        <h1>Welcome To VIP Dashboard</h1>
+    </div>
+    <app-vip [joke]="vipJoke"></app-vip>
 </div>
 
-<app-joke-generator [joke]="joke$ | async" [jokes]="jokes$ | async" [isSearchMode]="isSearchMode"
-                    (generateJokeWasSearch)="generateSearchJoke($event)"
-                    (generateJokeWasClicked)="generateRandomJoke()">
-</app-joke-generator>
+<div *ngIf="isNotVipMode">
+    <app-not-vip></app-not-vip>
+</div>

@@ -20,7 +20,11 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTableModule } from "@angular/material/table";
 import { MatListModule } from "@angular/material/list";
 import { MatPaginatorModule } from "@angular/material/paginator";
-
+import { RoutingService } from "../services/routes/routing.service";
+import { AppRoutingModule } from "../../../app-routing.module";
+import { RouterModule } from "@angular/router";
+import { VipComponent } from "../components/vip/vip.component";
+import { NotVipComponent } from "../components/not-vip/not-vip.component";
 
 @NgModule({
 	declarations: [
@@ -28,7 +32,9 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 		JokeComponent,
 		JokeGeneratorComponent,
 		SearchComponent,
-		JokeListComponent
+		JokeListComponent,
+		VipComponent,
+		NotVipComponent
 	],
 	imports: [
 		CommonModule,
@@ -46,10 +52,13 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 		MatFormFieldModule,
 		MatTableModule,
 		MatListModule,
-		MatPaginatorModule
+		MatPaginatorModule,
+		RouterModule,
+		AppRoutingModule
 	],
 	exports: [
 		ChuckNorrisMainComponent
-	]
+	],
+	providers: [RoutingService]
 })
 export class ChuckNorrisModule {}
