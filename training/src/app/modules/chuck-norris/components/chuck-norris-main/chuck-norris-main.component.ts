@@ -13,26 +13,20 @@ import { ActivatedRoute } from "@angular/router";
 export class ChuckNorrisMainComponent implements OnInit {
 
 	public joke$: Observable<Joke>;
-	public vipJoke: Joke;
 	public jokes$: Observable<Joke[]>
 	public isSearchMode: boolean;
-	public isVipMode: boolean;
-	public isNotVipMode: boolean;
 	private searchKey: string;
 
 	constructor(private jokeService: JokeService, private routingService: RoutingService,
 				private route: ActivatedRoute) {
 	}
 
-	public toggleJokeMode(url: string): void {
-		this.routingService.navigate(url);
-	}
-
 	public ngOnInit() {
 		this.isSearchMode = this.route.snapshot.data[ 'isSearchMode' ];
-		this.isVipMode    = this.route.snapshot.data[ 'isVipMode' ];
-		this.isNotVipMode = this.route.snapshot.data[ 'isNotVipMode' ];
-		this.vipJoke      = this.route.snapshot.data[ 'vipJoke' ];
+	}
+
+	public toggleJokeMode(url: string): void {
+		this.routingService.navigate(url);
 	}
 
 	public generateRandomJoke(): void {

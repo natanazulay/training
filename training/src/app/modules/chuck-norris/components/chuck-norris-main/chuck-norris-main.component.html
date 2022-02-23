@@ -1,4 +1,4 @@
-<div *ngIf="!isNotVipMode && !isVipMode">
+<div>
     <div class="top-bar">
         <img id="top-bar-fire" src="./assets/fire-img.svg" alt="error">
         <img id="top-bar-logo" src="./assets/chuck-norris-img.png" alt="error">
@@ -25,15 +25,4 @@
                         (generateJokeWasSearch)="generateSearchJoke($event)"
                         (generateJokeWasClicked)="generateRandomJoke()">
     </app-joke-generator>
-</div>
-
-<div *ngIf="isVipMode">
-    <div class="vip-header">
-        <h1>Welcome To VIP Dashboard</h1>
-    </div>
-    <app-vip [joke]="vipJoke"></app-vip>
-</div>
-
-<div *ngIf="isNotVipMode">
-    <app-not-vip></app-not-vip>
 </div>
