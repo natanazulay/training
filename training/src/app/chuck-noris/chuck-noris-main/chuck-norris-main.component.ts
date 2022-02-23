@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { JokeGeneratorService } from "../joke-generator.service";
 import { Observable } from "rxjs";
 import { Joke } from "../joke";
+import { RoutingService } from "../routing.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
 	selector: 'app-chuck-norris-main',
@@ -9,13 +11,18 @@ import { Joke } from "../joke";
 	styleUrls: ['./chuck-norris-main.component.scss']
 })
 
-export class ChuckNorrisMain {
+export class ChuckNorrisMain implements OnInit {
 	public jokeList$: Observable<Joke[]>;
 	public joke$: Observable<Joke>;
 	public isSearchMode: boolean = false;
+	public isVipMode: boolean;
 	public searchInput: string;
 
-	constructor(private jokeService: JokeGeneratorService) {
+	constructor(private activatedRoute: ActivatedRoute, private routingService: RoutingService, private jokeService: JokeGeneratorService) {
+	}
+
+	public ngOnInit(): void {
+		this.isSearchMode = this.activatedRoute.snapshot.data['isSearchMode'];
 	}
 
 	public getJokesFromSearch(searchedValue: string): void {
@@ -29,8 +36,7 @@ export class ChuckNorrisMain {
 		this.joke$ = this.jokeService.generateJoke();
 	}
 
-	onChangeModeClick(isSearchMode: boolean): void {
-		this.isSearchMode = isSearchMode;
+	navigate(state: string) : void{
+		this.routingService.navigate(state);
 	}
-
 }

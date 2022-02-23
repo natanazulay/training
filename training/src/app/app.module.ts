@@ -3,15 +3,17 @@ import { AppComponent } from './app.component';
 import { ChuckNorrisModule } from "./chuck-noris/chuck-norris.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatTableModule } from "@angular/material/table";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
 	declarations: [
-		AppComponent
+		AppComponent,
 	],
 	imports: [
 		ChuckNorrisModule,
 		BrowserAnimationsModule,
-		MatTableModule
+		MatTableModule,
+		RouterModule
 	],
 	exports: [],
 	providers: [],

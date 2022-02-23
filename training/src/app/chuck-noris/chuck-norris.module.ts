@@ -15,7 +15,8 @@ import { MatTableModule } from "@angular/material/table";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatInputModule } from "@angular/material/input";
 import { JokeListComponent } from "./joke-list/joke-list.component";
-
+import { PageNotFoundComponent } from "./pagenotfound/page-not-found.component";
+import { VipComponent } from "./vip/vip.component";
 
 @NgModule({
 	declarations: [
@@ -23,7 +24,9 @@ import { JokeListComponent } from "./joke-list/joke-list.component";
 		JokeGeneratorComponent,
 		JokeComponent,
 		SearchComponent,
-		JokeListComponent
+		JokeListComponent,
+		PageNotFoundComponent,
+		VipComponent,
 	],
 	imports: [
 		MatButtonModule,
@@ -40,6 +43,6 @@ import { JokeListComponent } from "./joke-list/joke-list.component";
 		MatInputModule,
 		ReactiveFormsModule,
 	],
-	exports: [ChuckNorrisMain],
+	exports: [ChuckNorrisMain, JokeComponent],
 })
 export class ChuckNorrisModule {}

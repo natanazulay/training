@@ -3,16 +3,19 @@
         <img id="fire" src="../assets/unnamed.png" alt="background">
         <img id="chuck-pic" src="../assets/unnamed-3.png">
     </div>
+    <div class="buttonsPlus">
     <div class="nav-buttons">
-        <button [ngClass]="{'selected-button': !isSearchMode}" class="random-button" mat-raised-button
-                (click)='onChangeModeClick(false)'>Random
+        <button (click)="navigate('random')" [ngClass]="{'selected-button': !isSearchMode}" class="random-button" mat-raised-button>Random
         </button>
-        <button [ngClass]="{'selected-button': isSearchMode}" class="search-button" mat-raised-button
-                (click)='onChangeModeClick(true)'>Search
+        <button (click)="navigate('search')" [ngClass]="{'selected-button': isSearchMode}" class="search-button" mat-raised-button>Search
         </button>
+        <a routerLink="/vip" href="" target="_blank" class="vip-button" mat-raised-button>VIP</a>
+    </div>
+
     </div>
     <app-joke-generator (generateRandomJokeClicked)='onGenerateJokeClick()'
                         (generateJokesClicked)="getJokesFromSearch($event)"
                         (generateJokesSearched)="getJokesFromSearch($event)"
-                        [isSearchMode]="isSearchMode" [jokeList]="jokeList$ | async" [joke]="joke$ | async"></app-joke-generator>
+                        [isSearchMode]="isSearchMode"
+                        [jokeList]="jokeList$ | async" [joke]="joke$ | async"></app-joke-generator>
 </div>

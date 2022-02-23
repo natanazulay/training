@@ -18,9 +18,9 @@ export class JokeGeneratorComponent {
 
 	onGenerateJokesFromClick(searchedValue: string): void {
 		if (!this.isSearchMode) {
-			this.generateJokesClicked.emit(searchedValue);
-		} else {
 			this.generateRandomJokeClicked.emit();
+		} else {
+			this.generateJokesClicked.emit(searchedValue);
 		}
 	}
 
