@@ -15,7 +15,7 @@ import { MatTableModule } from "@angular/material/table";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatInputModule } from "@angular/material/input";
 import { JokeListComponent } from "./joke-list/joke-list.component";
-import { PageNotFoundComponent } from "./pagenotfound/page-not-found.component";
+import { UnauthorizedPage } from "./unauthorized-page/unauthorized-page";
 import { VipComponent } from "./vip/vip.component";
 
 @NgModule({
@@ -25,7 +25,7 @@ import { VipComponent } from "./vip/vip.component";
 		JokeComponent,
 		SearchComponent,
 		JokeListComponent,
-		PageNotFoundComponent,
+		UnauthorizedPage,
 		VipComponent,
 	],
 	imports: [

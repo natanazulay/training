@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { JokeGeneratorService } from "../joke-generator.service";
+import { JokeGeneratorService } from "../services/joke-generator.service";
 import { Observable } from "rxjs";
 import { Joke } from "../joke";
-import { RoutingService } from "../routing.service";
+import { RoutingService } from "../services/routing.service";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({

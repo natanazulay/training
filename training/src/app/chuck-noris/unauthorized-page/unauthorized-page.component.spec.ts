@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageNotFoundComponent } from './page-not-found.component';
+import { UnauthorizedPage } from './unauthorized-page';
 
 describe('PagenotfoundComponent', () => {
-  let component: PageNotFoundComponent;
-  let fixture: ComponentFixture<PageNotFoundComponent>;
+  let component: UnauthorizedPage;
+  let fixture: ComponentFixture<UnauthorizedPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PageNotFoundComponent ]
+      declarations: [UnauthorizedPage ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PageNotFoundComponent);
+    fixture = TestBed.createComponent(UnauthorizedPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

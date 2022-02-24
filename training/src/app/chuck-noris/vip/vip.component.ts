@@ -14,7 +14,6 @@ export class VipComponent implements OnInit {
 	}
 
 	public ngOnInit() {
-		console.log(this.activatedRoute.snapshot.data);
-		this.joke = this.activatedRoute.snapshot.data[ '0' ];
+		this.joke = this.activatedRoute.snapshot.data[ 'joke' ];
 	}
 }

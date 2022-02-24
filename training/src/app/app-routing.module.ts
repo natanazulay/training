@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { VipGuard } from "./chuck-noris/vip.guard";
-import { JokeDataResolver } from "./chuck-noris/joke-data.resolver";
-import { PageNotFoundComponent } from "./chuck-noris/pagenotfound/page-not-found.component";
+import { VipGuard } from "./chuck-noris/guards/vip.guard";
+import { JokeDataResolver } from "./chuck-noris/resolvers/joke-data.resolver";
+import { UnauthorizedPage } from "./chuck-noris/unauthorized-page/unauthorized-page";
 import { ChuckNorrisMain } from "./chuck-noris/chuck-noris-main/chuck-norris-main.component";
 import { VipComponent } from "./chuck-noris/vip/vip.component";
 
@@ -26,12 +26,12 @@ const routes: Routes = [
 		path: 'vip',
 		component: VipComponent,
 		canActivate: [VipGuard],
-		resolve: [JokeDataResolver],
+		resolve: {joke: JokeDataResolver},
 		data: {
 			isVipMode: true
 		}
 	},
-	{ path: 'not-vip', component: PageNotFoundComponent }
+	{ path: 'not-vip', component: UnauthorizedPage }
 ];
 
 @NgModule({

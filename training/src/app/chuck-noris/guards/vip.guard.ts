@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { RoutingService } from "./routing.service";
+import { RoutingService } from "../services/routing.service";
 
 @Injectable({
 	providedIn: 'root'
 })
 export class VipGuard implements CanActivate {
-	public hasPermission: boolean;
 
 	constructor(private routingService: RoutingService) {
 	}
@@ -15,10 +14,10 @@ export class VipGuard implements CanActivate {
 	canActivate(
 		route: ActivatedRouteSnapshot,
 		state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-		this.hasPermission = Math.random() > 0.5;
-		if(!this.hasPermission){
+		let hasPermission = Math.random() > 0.5;
+		if (!hasPermission) {
 			this.routingService.navigate('not-vip');
 		}
-		return this.hasPermission
+		return hasPermission
 	}
 }

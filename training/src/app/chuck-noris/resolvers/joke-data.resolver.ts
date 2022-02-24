@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Joke } from "./joke";
-import { JokeGeneratorService } from "./joke-generator.service";
+import { Joke } from "../joke";
+import { JokeGeneratorService } from "../services/joke-generator.service";
 
 @Injectable({
 	providedIn: 'root'
