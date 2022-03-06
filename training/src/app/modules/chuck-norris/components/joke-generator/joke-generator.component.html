@@ -1,4 +1,3 @@
-
 <div *ngIf="isSearchMode; else randMode">
     <div [ngClass]="{'search-style': isSearchMode}">
         <div class="key-word-style">
@@ -37,6 +36,6 @@
     <app-joke *ngIf="!isSearchMode" [joke]="joke" [isSearchMode]="!isSearchMode"></app-joke>
 </div>
 
-<div *ngIf="jokes && isSearchMode">
-    <app-joke-list [jokes]="jokes"></app-joke-list>
+<div *ngIf="isSearchMode">
+    <app-joke-list ></app-joke-list>
 </div>

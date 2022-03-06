@@ -1,6 +1,9 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { getSearchListJokesSelector } from "../../../../store/selectors/app.selectors";
 import { Joke } from "../../models/joke.modle";
 import { MatTableDataSource } from "@angular/material/table";
-import { Component, Input, OnInit } from '@angular/core';
+import { Store } from "@ngrx/store";
+import { AppState } from "../../../../store/states/app.state";
 
 @Component({
 	selector: 'app-joke-list',
@@ -9,6 +12,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class JokeListComponent implements OnInit {
 
+	constructor(private store: Store<AppState>) {
+	}
+
 	@Input() public jokes: Joke[];
 	public jokeClickedId: string;
 	public isTableExpanded: boolean            = false;
@@ -16,7 +22,9 @@ export class JokeListComponent implements OnInit {
 	public displayedJokesColumnsList: string[] = ['id', 'category', 'date_created'];
 
 	ngOnInit(): void {
-		this.jokeList.data = this.jokes;
+		this.store.select(getSearchListJokesSelector).subscribe(
+			(jokes: Joke[]) => this.jokeList.data = jokes
+		)
 	}
 
 	onClickExpended(joke: Joke): void {

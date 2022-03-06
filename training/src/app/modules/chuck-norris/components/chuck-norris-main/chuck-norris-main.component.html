@@ -21,7 +21,7 @@
         </mat-button-toggle-group>
     </div>
 
-    <app-joke-generator [joke]="joke$ | async" [jokes]="jokes$ | async" [isSearchMode]="isSearchMode"
+    <app-joke-generator [joke]="joke$ | async" [isSearchMode]="isSearchMode"
                         (generateJokeWasSearch)="generateSearchJoke($event)"
                         (generateJokeWasClicked)="generateRandomJoke()">
     </app-joke-generator>
