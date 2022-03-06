@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { getRandomJokeSelector } from "../../../../store/selectors/app.selectors";
+import { JokeService } from "../../services/joke/joke.service";
 import { Observable } from "rxjs";
 import { Joke } from "../../models/joke.modle";
 import { RoutingService } from "../../services/routes/routing.service";
@@ -7,6 +7,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { AppState } from "../../../../store/states/app.state";
 import { AppActions } from "../../../../store/actions/app.actions";
+import { getRandomJokeSelector, getSearchListJokesSelector } from "../../../../store/selectors/app.selectors";
 
 @Component({
 	selector: 'app-chuck-norris-main',
@@ -17,6 +18,7 @@ import { AppActions } from "../../../../store/actions/app.actions";
 export class ChuckNorrisMainComponent implements OnInit {
 
 	public joke$: Observable<Joke>;
+	public jokes$: Observable<Joke[]>
 	public isSearchMode: boolean;
 	private searchKey: string;
 
@@ -26,6 +28,7 @@ export class ChuckNorrisMainComponent implements OnInit {
 	public ngOnInit() {
 		this.isSearchMode = this.route.snapshot.data[ 'isSearchMode' ];
 		this.joke$        = this.store.select(getRandomJokeSelector)
+		this.jokes$       = this.store.select(getSearchListJokesSelector)
 	}
 
 	public toggleJokeMode(url: string): void {

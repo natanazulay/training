@@ -13,7 +13,7 @@ export class AppEffects {
 	constructor(private actions$: Actions, private jokeService: JokeService) {
 	}
 
-	RandomJoke$ = createEffect(() =>
+	randomJoke$ = createEffect(() =>
 		this.actions$.pipe(
 			ofType(AppActions.GET_RANDOM_JOKE),
 			exhaustMap(() =>
@@ -25,10 +25,10 @@ export class AppEffects {
 		)
 	)
 
-	JokeBySearchKey$ = createEffect(() =>
+	jokeBySearchKey$ = createEffect(() =>
 		this.actions$.pipe(
 			ofType(AppActions.GET_SEARCH_JOKES),
-			concatMap((action: any) =>
+			concatMap((action: { payload: string }) =>
 				this.jokeService.getSearchListJokes(action.payload).pipe(
 					map((joke: Joke[]) => AppActions.GET_SEARCH_JOKES_SUCCESS({ payload: joke })),
 					catchError((err) => of(AppActions.GET_SEARCH_JOKES_FAILED({ payload: err })))

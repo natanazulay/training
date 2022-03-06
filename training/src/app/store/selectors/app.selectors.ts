@@ -10,6 +10,6 @@ export const getRandomJokeSelector = createSelector(
 
 export const getSearchListJokesSelector = createSelector(
 	getAppState,
-	(state: AppState) => state.jokes
+	(state: AppState) => [...state.jokes]
 );
 

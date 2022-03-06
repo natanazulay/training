@@ -17,6 +17,7 @@ export class Joke {
 		joke.updatedDate = data[ 'updated_at' ];
 		joke.url         = data[ 'url' ];
 		joke.value       = data[ 'value' ];
+		joke.isExpanded = false
 		return joke;
 	}
 }

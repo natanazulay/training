@@ -8,7 +8,7 @@ export interface AppState {
 }
 
 export const initialAppState: AppState = {
-	randomJoke: null,
+	randomJoke: undefined,
 	jokes: [],
 	randomJokeError: '',
 	searchJokesError: ''
