@@ -1,5 +1,3 @@
-import { Component, OnInit } from '@angular/core';
-import { JokeService } from "../../services/joke/joke.service";
 import { Observable } from "rxjs";
 import { Joke } from "../../models/joke.modle";
 import { RoutingService } from "../../services/routes/routing.service";
@@ -7,6 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { AppState } from "../../../../store/states/app.state";
 import { AppActions } from "../../../../store/actions/app.actions";
+import { Component, OnInit } from '@angular/core';
 import { getRandomJokeSelector, getSearchListJokesSelector } from "../../../../store/selectors/app.selectors";
 
 @Component({
