@@ -17,6 +17,8 @@ import { MatInputModule } from "@angular/material/input";
 import { JokeListComponent } from "./joke-list/joke-list.component";
 import { UnauthorizedPage } from "./unauthorized-page/unauthorized-page";
 import { VipComponent } from "./vip/vip.component";
+import { EffectsModule } from "@ngrx/effects";
+import { AppEffects } from "../store/app.effect";
 
 @NgModule({
 	declarations: [
@@ -42,6 +44,7 @@ import { VipComponent } from "./vip/vip.component";
 		MatTableModule,
 		MatInputModule,
 		ReactiveFormsModule,
+		EffectsModule.forFeature([AppEffects])
 	],
 	exports: [ChuckNorrisMain, JokeComponent],
 })

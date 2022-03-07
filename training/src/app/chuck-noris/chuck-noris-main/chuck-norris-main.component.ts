@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { JokeGeneratorService } from "../services/joke-generator.service";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 import { Joke } from "../joke";
 import { RoutingService } from "../services/routing.service";
 import { ActivatedRoute } from "@angular/router";
+import { Store } from "@ngrx/store";
+import { AppState } from "../../store/state";
+import { selectJoke, selectJokeList } from "../../store/generateJoke.selector";
+import { generateJoke, getJokeList } from "../../store/generateJoke.actions";
 
 @Component({
 	selector: 'app-chuck-norris-main',
@@ -12,31 +16,39 @@ import { ActivatedRoute } from "@angular/router";
 })
 
 export class ChuckNorrisMain implements OnInit {
-	public jokeList$: Observable<Joke[]>;
-	public joke$: Observable<Joke>;
-	public isSearchMode: boolean = false;
+	public jokeList$: Observable<Joke[]> = this.store.select(state => state.jokeList);
+	public joke$: Observable<Joke>       = this.store.select(state => state.joke);
+	public isSearchMode: boolean         = false;
 	public isVipMode: boolean;
 	public searchInput: string;
 
-	constructor(private activatedRoute: ActivatedRoute, private routingService: RoutingService, private jokeService: JokeGeneratorService) {
+	constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute,
+				private routingService: RoutingService, private jokeService: JokeGeneratorService) {
 	}
 
 	public ngOnInit(): void {
-		this.isSearchMode = this.activatedRoute.snapshot.data['isSearchMode'];
+		this.isSearchMode = this.activatedRoute.snapshot.data[ 'isSearchMode' ];
+		this.store.select(selectJoke).subscribe((joke: Joke) => {
+			this.joke$ = of(joke);
+		})
+
+		this.store.select(selectJokeList).subscribe((jokeList: Joke[]) => {
+			this.jokeList$ = of(jokeList);
+		})
 	}
 
 	public getJokesFromSearch(searchedValue: string): void {
 		if (this.searchInput != searchedValue) {
-			this.jokeList$ = this.jokeService.getJokeList(searchedValue);
+			this.store.dispatch(getJokeList({ payload: searchedValue }));
 		}
 		this.searchInput = searchedValue;
 	}
 
 	onGenerateJokeClick(): void {
-		this.joke$ = this.jokeService.generateJoke();
+		this.store.dispatch(generateJoke());
 	}
 
-	navigate(state: string) : void{
+	navigate(state: string): void {
 		this.routingService.navigate(state);
 	}
 }

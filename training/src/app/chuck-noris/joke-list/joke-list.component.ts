@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from "@angular/material/table";
 import { Joke } from "../joke";
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Store } from "@ngrx/store";
+import { AppState } from "../../store/state";
+import { selectJokeList } from "../../store/generateJoke.selector";
 
 
 @Component({
@@ -23,8 +26,13 @@ export class JokeListComponent implements OnInit {
 	public columnsToDisplay: string[]              = ['id', 'category', 'created_at'];
 	public expandedElement: Joke;
 
+	constructor(private store: Store<AppState>) {
+	}
+
 	ngOnInit(): void {
-		this.jokeListTable.data = this.jokeList;
+		this.store.select(selectJokeList).subscribe((jokeList: Joke[]) => {
+			this.jokeListTable.data = jokeList;
+		})
 	}
 }
 
