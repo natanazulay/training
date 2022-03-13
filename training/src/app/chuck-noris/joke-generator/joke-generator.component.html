@@ -17,6 +17,6 @@
         </ng-template>
         <button id="go-button" mat-raised-button color="warn" (click)="onGenerateJokesFromClick(this.searchedValue)"> Go! </button>
     </div>
-    <app-joke-list [jokeList]="jokeList" *ngIf="jokeList && isSearchMode"></app-joke-list>
+    <app-joke-list [jokeList]="jokeList" *ngIf="jokeList.length > 0 && isSearchMode"></app-joke-list>
     <app-joke [joke]="joke" *ngIf="joke && !isSearchMode"></app-joke>
 </div>

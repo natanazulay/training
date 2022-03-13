@@ -7,7 +7,7 @@ import {
 	getJokeListSuccess
 } from "./generateJoke.actions";
 export const initialAppState = {
-	joke: null,
+	joke: undefined,
 	jokeList: [],
 	jokeErr: '',
 	jokeListErr: ''

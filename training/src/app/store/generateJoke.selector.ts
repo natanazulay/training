@@ -2,7 +2,6 @@ import { createSelector } from "@ngrx/store";
 import { AppState } from "./state";
 
 export const getJokeState     = (state: any) => state.appState as AppState;
-export const getJokeListState = (state: any) => state.appState as AppState;
 
 export const selectJoke = createSelector(
 	getJokeState,
@@ -10,6 +9,6 @@ export const selectJoke = createSelector(
 );
 
 export const selectJokeList = createSelector(
-	getJokeListState,
+	getJokeState,
 	(state: AppState) => state.jokeList
 )

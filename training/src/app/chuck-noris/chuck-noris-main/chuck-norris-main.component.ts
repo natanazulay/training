@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { JokeGeneratorService } from "../services/joke-generator.service";
-import { Observable, of } from "rxjs";
+import { Observable } from "rxjs";
 import { Joke } from "../joke";
 import { RoutingService } from "../services/routing.service";
 import { ActivatedRoute } from "@angular/router";
@@ -16,25 +15,18 @@ import { generateJoke, getJokeList } from "../../store/generateJoke.actions";
 })
 
 export class ChuckNorrisMain implements OnInit {
-	public jokeList$: Observable<Joke[]> = this.store.select(state => state.jokeList);
-	public joke$: Observable<Joke>       = this.store.select(state => state.joke);
+	public jokeList$: Observable<Joke[]> = this.store.select(selectJokeList);
+	public joke$: Observable<Joke>       = this.store.select(selectJoke);
 	public isSearchMode: boolean         = false;
 	public isVipMode: boolean;
 	public searchInput: string;
 
 	constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute,
-				private routingService: RoutingService, private jokeService: JokeGeneratorService) {
+				private routingService: RoutingService) {
 	}
 
 	public ngOnInit(): void {
 		this.isSearchMode = this.activatedRoute.snapshot.data[ 'isSearchMode' ];
-		this.store.select(selectJoke).subscribe((joke: Joke) => {
-			this.joke$ = of(joke);
-		})
-
-		this.store.select(selectJokeList).subscribe((jokeList: Joke[]) => {
-			this.jokeList$ = of(jokeList);
-		})
 	}
 
 	public getJokesFromSearch(searchedValue: string): void {

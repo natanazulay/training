@@ -5,6 +5,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Store } from "@ngrx/store";
 import { AppState } from "../../store/state";
 import { selectJokeList } from "../../store/generateJoke.selector";
+import { Subject } from "rxjs";
 
 
 @Component({
@@ -20,11 +21,12 @@ import { selectJokeList } from "../../store/generateJoke.selector";
 	],
 })
 
-export class JokeListComponent implements OnInit {
+export class JokeListComponent implements OnInit{
 	@Input() public jokeList: Joke[];
 	public jokeListTable: MatTableDataSource<Joke> = new MatTableDataSource();
 	public columnsToDisplay: string[]              = ['id', 'category', 'created_at'];
 	public expandedElement: Joke;
+	public untilDestroy: Subject<void>                             = new Subject<void>();
 
 	constructor(private store: Store<AppState>) {
 	}
@@ -33,6 +35,10 @@ export class JokeListComponent implements OnInit {
 		this.store.select(selectJokeList).subscribe((jokeList: Joke[]) => {
 			this.jokeListTable.data = jokeList;
 		})
+	}
+
+	public ngOnDestroy() {
+		this.untilDestroy.next();
 	}
 }
 
