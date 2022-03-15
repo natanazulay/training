@@ -14,7 +14,7 @@ export class JokeGeneratorComponent {
 	@Input() public jokes: Joke[];
 	@Input() public isSearchMode: boolean;
 	@Output() public generateJokeWasClicked: EventEmitter<void>   = new EventEmitter<void>()
-	@Output() private generateJokeWasSearch: EventEmitter<string> = new EventEmitter<string>()
+	@Output() public generateJokeWasSearch: EventEmitter<string> = new EventEmitter<string>()
 
 	public onSearch(searchKey: string): void {
 		this.generateJokeWasSearch.emit(searchKey);
