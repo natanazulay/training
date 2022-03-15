@@ -6,3 +6,10 @@ export interface AppState {
 	jokeErr: string,
 	jokeListErr: string;
 }
+
+export const initialAppState = {
+	joke: undefined,
+	jokeList: [],
+	jokeErr: '',
+	jokeListErr: ''
+};

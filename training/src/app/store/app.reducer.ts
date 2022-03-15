@@ -1,35 +1,20 @@
 import { createReducer, on } from '@ngrx/store';
-import {
-	generateJoke,
-	generateJokeFailed,
-	generateJokeSuccess,
-	getJokeList, getJokeListFailed,
-	getJokeListSuccess
-} from "./generateJoke.actions";
-export const initialAppState = {
-	joke: undefined,
-	jokeList: [],
-	jokeErr: '',
-	jokeListErr: ''
-};
+import { generateJokeFailed, generateJokeSuccess, getJokeListFailed, getJokeListSuccess } from "./generateJoke.actions";
+import { initialAppState } from "./state";
 
 const _appReducer = createReducer(
 	initialAppState,
-	on(getJokeList, (state, action) => {
+	on(getJokeListSuccess, (state, action) => {
 		return { ...state, jokeList: action.payload }
 	}),
-	on(getJokeListSuccess, (state, action) => {
-		return {...state, jokeList: action.payload }
-	}),
 	on(getJokeListFailed, (state, action) => {
-		return {...state, jokeListErr: action.payload }
+		return { ...state, jokeListErr: action.payload }
 	}),
-	on(generateJoke, (state) => { return {...state}}),
 	on(generateJokeSuccess, (state, action) => {
 		return { ...state, joke: action.payload }
 	}),
 	on(generateJokeFailed, (state, action) => {
-		return { ...state, jokeErr: action.payload}
+		return { ...state, jokeErr: action.payload }
 	}),
 )
 

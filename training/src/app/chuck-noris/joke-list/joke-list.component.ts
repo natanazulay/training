@@ -32,9 +32,7 @@ export class JokeListComponent implements OnInit{
 	}
 
 	ngOnInit(): void {
-		this.store.select(selectJokeList).subscribe((jokeList: Joke[]) => {
-			this.jokeListTable.data = jokeList;
-		})
+		this.jokeListTable.data = this.jokeList;
 	}
 
 	public ngOnDestroy() {
