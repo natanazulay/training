@@ -1,22 +1,25 @@
 <div class="main">
     <div class="info-container">
-        <app-search *ngIf="isSearchMode; else random_block" (generateJokesFromClick)="this.searchedValue = $event"
-                    (generateJokesFromSearch)="onGenerateJokesFromSearch($event)"></app-search>
+        <app-search (generateJokesFromClick)="this.searchedValue = $event"
+                    (generateJokesFromSearch)="onGenerateJokesFromSearch($event)"
+                    *ngIf="isSearchMode; else random_block"></app-search>
         <ng-template #random_block>
             <div class="name-block">
                 <label class="rectangle-name" for="name"> Your name </label>
-                <input class="rectangle-name" type="text" id="name" name="name">
+                <input class="rectangle-name" id="name" name="name" type="text">
             </div>
             <div class="category-block">
                 <label class="rectangle-category" id="category"> Category </label>
                 <select class="rectangle-category" for="category" name="category">
-                    <option value="all-categories"> All categories </option>
-                    <option value="animals"> Animals </option>
+                    <option value="all-categories"> All categories</option>
+                    <option value="animals"> Animals</option>
                 </select>
             </div>
         </ng-template>
-        <button id="go-button" mat-raised-button color="warn" (click)="onGenerateJokesFromClick(this.searchedValue)"> Go! </button>
+        <button (click)="onGenerateJokesFromClick(this.searchedValue)" color="warn" id="go-button" mat-raised-button>
+            Go!
+        </button>
     </div>
-    <app-joke-list [jokeList]="jokeList" *ngIf="jokeList.length > 0 && isSearchMode"></app-joke-list>
-    <app-joke [joke]="joke" *ngIf="joke && !isSearchMode"></app-joke>
+    <app-joke-list *ngIf="jokeList.length > 0 && isSearchMode" [jokeList]="jokeList"></app-joke-list>
+    <app-joke *ngIf="joke && !isSearchMode" [joke]="joke"></app-joke>
 </div>

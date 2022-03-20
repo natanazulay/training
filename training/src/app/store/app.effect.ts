@@ -13,13 +13,10 @@ import { JokeGeneratorService } from "../chuck-noris/services/joke-generator.ser
 
 @Injectable()
 export class AppEffects {
-	constructor(private actions$: Actions, private jokeService: JokeGeneratorService) {
-	}
-
-	getJokeList$ = createEffect(() => this.actions$.pipe(
+	getJokeList$  = createEffect(() => this.actions$.pipe(
 			ofType(getJokeList),
 			exhaustMap((action: { payload: string }) =>
-				this.jokeService.getJokeList(action.payload)
+				this.jokeService.generateJokesFromSearch(action.payload)
 				.pipe(
 					map((res) => getJokeListSuccess({ payload: res })),
 					catchError((err) => of(getJokeListFailed({ payload: err })))
@@ -38,4 +35,7 @@ export class AppEffects {
 			)
 		)
 	);
+
+	constructor(private actions$: Actions, private jokeService: JokeGeneratorService) {
+	}
 }

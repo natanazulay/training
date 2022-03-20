@@ -1,12 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 $orange-color: #ff3535;
-$light-orange-color : #FEF2ED;
-$turquoise-color : #54b6de;
-$light-blue-color : #7ed0ef;
-$white-color : white;
-$black-color : black;
-$light-light-blue : #a2e3fc;
-$light-background-grey : #e8e8e8;
+$light-orange-color: #FEF2ED;
+$turquoise-color: #54b6de;
+$light-blue-color: #7ed0ef;
+$white-color: white;
+$black-color: black;
+$light-light-blue: #a2e3fc;
+$light-background-grey: #e8e8e8;

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpInterceptor,HttpHandler,HttpRequest,HttpResponse} from "@angular/common/http";
-import { catchError, map, Observable, pluck, Subject, tap, throwError } from "rxjs";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { catchError, map, Observable, pluck, Subject, throwError } from "rxjs";
 import { Joke } from "../joke";
 
 
 @Injectable({ providedIn: 'root' })
 export class JokeGeneratorService {
 	public searchInput: Subject<string> = new Subject<string>();
-	private jokeUrl                     = "https://api.chucknorris.io/jokes/random";
+	public jokeUrl                      = "https://api.chucknorris.io/jokes/random";
 	private searchJokeUrl               = 'https://api.chucknorris.io/jokes/search';
 
 	constructor(private http: HttpClient) {
@@ -17,16 +17,16 @@ export class JokeGeneratorService {
 		return this.http.get<Joke>(this.jokeUrl);
 	}
 
-	getJokeList(searchedValue: string): Observable<any> {
+	generateJokesFromSearch(searchedValue: string): Observable<any> {
 		return this.http.get<any>(this.searchJokeUrl, { params: { query: searchedValue } })
 		.pipe(
 			pluck('result'),
-			map((data) => data.slice(0,10)),
+			map((data) => data.slice(0, 10)),
 			catchError(this.handleError),
 		);
 	}
 
-	handleError(error:  HttpErrorResponse) {
+	handleError(error: HttpErrorResponse) {
 		let errorMessage = '';
 		if (error.error instanceof ErrorEvent) {
 			errorMessage = error.error.message;

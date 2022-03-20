@@ -1,43 +1,44 @@
 @import "../../../styles";
+
 $small: 500px;
 
-.info-container{
+.info-container {
   position: relative;
   padding: 0 10px;
   height: 124px;
   width: 80%;
   display: flex;
   flex-direction: row;
-  align-items: center ;
+  align-items: center;
   justify-content: space-evenly;
   background: $light-orange-color;
   margin-bottom: 20px;
 
-  @media screen and (max-width: $small){
+  @media screen and (max-width: $small) {
     flex-direction: column;
   }
 }
 
-#go-button{
+#go-button {
   width: 141.24px;
   height: 39px;
   margin-left: 30px;
 }
 
-.main{
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.rectangle-name , .rectangle-category{
+.rectangle-name, .rectangle-category {
   box-sizing: border-box;
   margin-right: 15px;
   width: 300px;
   height: 30px;
 
-  @media screen and (max-width: $small){
+  @media screen and (max-width: $small) {
     width: 150px;
     height: 20px;
   }

@@ -1,29 +1,30 @@
 <div class="main">
     <div class="jokes">
-        <table mat-table [dataSource]="jokeListTable" multiTemplateDataRows class="mat-elevation-z8"
-               *ngIf="jokeListTable.data.length > 0">
+        <table *ngIf="jokeListTable.data.length > 0" [dataSource]="jokeListTable" class="mat-elevation-z8"
+               class="jokes-table" mat-table
+               multiTemplateDataRows>
             <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> ID</th>
-                <td mat-cell *matCellDef="let joke">
+                <th *matHeaderCellDef mat-header-cell> ID</th>
+                <td *matCellDef="let joke" mat-cell>
                     {{joke.id}}</td>
             </ng-container>
 
             <ng-container matColumnDef="category">
-                <th mat-header-cell *matHeaderCellDef> Category</th>
-                <td mat-cell *matCellDef="let joke">
+                <th *matHeaderCellDef mat-header-cell> Category</th>
+                <td *matCellDef="let joke" mat-cell>
                     {{joke.categories}} </td>
             </ng-container>
 
             <ng-container matColumnDef="created_at">
-                <th mat-header-cell *matHeaderCellDef> Date created</th>
-                <td mat-cell *matCellDef="let joke">
+                <th *matHeaderCellDef mat-header-cell> Date created</th>
+                <td *matCellDef="let joke" mat-cell>
                     {{joke.created_at}} </td>
             </ng-container>
 
             <ng-container matColumnDef="expandedDetail">
-                <td mat-cell *matCellDef="let joke" [attr.colspan]="columnsToDisplay.length">
-                    <div class="element-detail"
-                         [@detailExpand]="joke == expandedElement ? 'expanded' : 'collapsed'">
+                <td *matCellDef="let joke" [attr.colspan]="columnsToDisplay.length" mat-cell>
+                    <div [@detailExpand]="joke == expandedElement ? 'expanded' : 'collapsed'"
+                         class="element-detail">
                         <div class="element-description">
                             <div class="body">
                                 <div class="joke-container">
@@ -35,13 +36,14 @@
                 </td>
             </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-            <tr mat-row *matRowDef="let joke; columns: columnsToDisplay;"
-                class="element-row"
+            <tr *matHeaderRowDef="columnsToDisplay" mat-header-row></tr>
+            <tr (click)="expandedElement = expandedElement === joke ? null : joke"
+                *matRowDef="let joke; columns: columnsToDisplay;"
                 [class.example-expanded-row]="expandedElement === joke"
-                (click)="expandedElement = expandedElement === joke ? null : joke">
+                class="element-row"
+                mat-row>
             </tr>
-            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+            <tr *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row" mat-row></tr>
         </table>
     </div>
 </div>
